@@ -6,7 +6,10 @@
 
 $(document).ready(function () {
 
+  //init first load
   init();
   
+  
+
 
 });

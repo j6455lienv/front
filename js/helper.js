@@ -1,13 +1,16 @@
 /**
  * filename: /js/helper.js
- * In this file, storage of static functions used in main.js file
+ * file of helper functions
  * 
  */
 
-//initialize the first load
-function init() {
-  $("#header").load("./components/header/cmp.html");
-  $("#page").load("./components/carousel/cmp.html");
-  $("#footer").load("./components/footer/cmp.html");
+function getScript(scriptLink) {
+  $(document).ready(function () {
+    $.getScript('./' + scriptLink, function (data, textStatus, jqxhr) {
+      //console.log( data );
+      //console.log( textStatus );
+      //console.log( jqxhr.status );
+      //console.log( "Load was performed." );
+    });
+  });
 }
-
