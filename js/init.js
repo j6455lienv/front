@@ -11,11 +11,9 @@ function init() {
   $("#header").load("./components/header/cmp.html");
   $("#footer").load("./components/footer/cmp.html");
 
-  //load the body of page 
-  $("#page").load("./vues/accueil/accueil.html")
+  route('accueil');
 
   //load the other scripts of the app components scripts and 
-  getScript("vues/accueil/accueil.js");
   getScript("components/header/cmp.js");
   
 }
