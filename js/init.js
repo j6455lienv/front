@@ -16,6 +16,7 @@ function init() {
   //load the other scripts of the app components scripts and 
   getScript("components/header/cmp.js");
   
+  
 }
 
 
