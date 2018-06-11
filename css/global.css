@@ -1,8 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
-@import url('https://fonts.googleapis.com/css?family=Odor+Mean+Chey');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 h1, h3{
   text-align: center;
   text-transform: uppercase;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat', sans-serif!important;
+}
+
+body {
+  font-family: 'Roboto', sans-serif!important;
 }
