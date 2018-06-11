@@ -1,2 +1,11 @@
-a { text-transform: uppercase; }
-header { margin-bottom: 20px }
+a {
+  text-transform: uppercase;
+}
+
+header { 
+  margin-bottom: 20px;
+}
+
+img {
+  width: 39px;
+}
