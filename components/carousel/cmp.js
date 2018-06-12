@@ -1,5 +1,5 @@
 console.log('carousel.js ok');
 
-//window.onload = function () {
+window.onload = function () {
   randomImage();
-//}
+}

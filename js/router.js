@@ -8,14 +8,13 @@ function route(pageName){
   let pathname = "/nutrimeal/";
   
 	//load the html and js files of the the route 
-	getScript('views/'+pageName+'/'+pageName+'.js');
-	$("#page").load('./views/'+pageName+'/'+pageName+'.html');
-
-  if(pageName === "accueil"){
-    randomImage();
-  }
+  $("#page").load('./views/'+pageName+'/'+pageName+'.html');
+  getScript('views/'+pageName+'/'+pageName+'.js');
 
   //create path url
 	window.history.pushState(null,null, pathname + pageName);
-	
+  
+  //if(pageName === "accueil"){
+    //randomImage();
+  //}
 }
