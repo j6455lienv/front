@@ -11,6 +11,10 @@ function route(pageName){
 	getScript('views/'+pageName+'/'+pageName+'.js');
 	$("#page").load('./views/'+pageName+'/'+pageName+'.html');
 
+  if(pageName === "accueil"){
+    randomImage();
+  }
+
   //create path url
 	window.history.pushState(null,null, pathname + pageName);
 	
