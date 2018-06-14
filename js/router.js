@@ -1,5 +1,5 @@
 /**
- * filename: /js/route.js
+ * filename: /js/router.js
  * In this file, one function to create route 
  * 
  */
