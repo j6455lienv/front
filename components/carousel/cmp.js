@@ -13,7 +13,7 @@ function randomImage(){
   var slide2Random = getRandom(1, 10);
   var slide3Random = getRandom(1, 10);
 
-  /*test que les 3 photo randomisée ne soient pas identique*/
+  /*test que les 3 photos randomisée ne soient pas identique*/
   while (slide1Random == slide2Random 
     || slide1Random == slide3Random 
     || slide2Random == slide3Random) {
@@ -26,9 +26,9 @@ function randomImage(){
   slide2Elt.src = "./img/img-" + slide2Random + ".jpg";
   slide3Elt.src = "./img/img-" + slide3Random + ".jpg";
 
-  console.log(slide1Elt.src);
+  //console.log(slide1Elt.src);
 
   //controle fonctionnement random different à chaque F5
-  console.log(slide1Random + ',' + slide2Random + ',' + slide3Random);
+  //console.log(slide1Random + ',' + slide2Random + ',' + slide3Random);
 }
 randomImage();
