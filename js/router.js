@@ -12,9 +12,5 @@ function route(pageName){
   getScript('views/'+pageName+'/'+pageName+'.js');
 
   //create path url
-	window.history.pushState(null,null, pathname + pageName);
-  
-  //if(pageName === "accueil"){
-    //randomImage();
-  //}
+	window.history.pushState(null,null, pageName);
 }
