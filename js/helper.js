@@ -4,6 +4,7 @@
  * 
  */
 
+// 
 function getScript(scriptLink) {
   $(document).ready(function () {
     $.getScript('./' + scriptLink, function (data, textStatus, jqxhr) {
@@ -50,5 +51,3 @@ function ajaxPost(url, data, callback) {
   });
   req.send(data);
 }
-
-
