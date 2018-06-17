@@ -2,10 +2,10 @@
 //variable globale liste de recette 
 var listrecette = [];
 //attention datas à changer pour la mise en prod
-let apiUrl = "data/recettes.json";
+var apiUrl = "data/recettes.json";
 
 //xhr params
-let xhr = new XMLHttpRequest();
+var xhr = new XMLHttpRequest();
 xhr.open("GET", apiUrl, true);
 xhr.setRequestHeader('Content-Type', 'application/json;charset=utf-8;');
 xhr.send();
