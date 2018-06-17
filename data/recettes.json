@@ -1,0 +1,38 @@
+[
+  {  
+    "id":1,
+    "recette":"couscous",
+    "ingredients":"semoule, mouton et pas de lardons !!"
+  },
+  {  
+    "id":2,
+    "recette":"courgettesa la creme",
+    "ingredients":"des courgettes et de la creme"
+  },
+  {  
+    "id":3,
+    "recette":"coulis de framboise",
+    "ingredients":"plein de framboises écrasées"
+  },
+  {  
+    "id":4,
+    "recette":"coulignade",
+    "ingredients":"plat d'auvergne qui coule bien"
+  },
+
+  {
+    "id":5,
+    "recette":"merguez",
+    "ingredients":"des merguez et des merguez"
+  },
+  {
+    "id":6,
+    "recette":"saucisse",
+    "ingredients":"des saucisses et pas de merguez"
+  },
+  {
+    "id":7,
+    "recette":"salade",
+    "ingredients":"en mode végétarien"
+  }
+]
