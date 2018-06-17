@@ -1,9 +1,6 @@
 //global variables for recettes page layout
-//variable globale liste de recette
-var jsonObject = []; 
-var listrecette = [];
-var listrecette2 = [];
-var recetteMap = [];
+var jsonObject = [];
+
 //attention datas à changer pour la mise en prod
 var apiUrl = "data/recettes.json";
 
@@ -20,16 +17,18 @@ $(document).ready(function () {
       
       //console.log("response_xhr: ");
       //console.log(jsonObject);
-      
+
+      var listrecette = [];
+      //var listrecette2 = []:
       //add json object in the list of recettes
       jsonObject.forEach(function(obj){
         listrecette.push(obj.recette);
-        listrecette2.push(
-          {
-          "id":obj.id,
-          "recette":obj.recette
-          }
-        );
+        //listrecette2.push(
+          //{
+          //"id":obj.id,
+          //"recette":obj.recette
+          //}
+        //);
       });
       
       //console.log("listrecette_array for source autocompletion: ");
