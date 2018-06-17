@@ -2,17 +2,16 @@
 <link rel="stylesheet" type="text/css" href="components/recette-bloca-controll/cmp.css">
 
 <div class="recette-bloca-controll components-border-div">
-	<form>
 		<!-- selection list to choose type of recette -->
 		<div class="recette-bloca-input container">
 			<label for="recette-bloca-input">Choisir une recette</label>
-			<input id="recette-bloca-input" class="form-control form-control-lg" />
+			<input id="recette-bloca-input" class="form-control form-control-lg" onchange="javascript:getRecette();"/>
 		</div>
 
 		<!-- selection list to choose type of recette -->
 		<div class="recette-blocb-select container">
 			<label for="recette-bloca-select">Choisir un nombre de personnes</label>
-			<select class="form-control form-control-lg">
+			<select id="recette-bloca-select" class="form-control form-control-lg" onchange="javascript:getRecette();">
 				<option>1</option>
 				<option>2</option>
 				<option>3</option>
@@ -27,7 +26,7 @@
 				<option>12</option>
 			</select>
 		</div>
-	</form>
 </div>
+
 <!-- add js script -->
 <script src="components/recette-bloca-controll/cmp.js">

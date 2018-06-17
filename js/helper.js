@@ -59,3 +59,13 @@ function ajaxPost(url, data, callback, isJson) {
   }
   req.send(data);
 }
+
+
+//return size of an object
+function ObjectSize(obj) {
+  var size = 0, key;
+  for (key in obj) {
+      if (obj.hasOwnProperty(key)) size++;
+  }
+  return size;
+};
