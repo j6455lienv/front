@@ -69,3 +69,10 @@ function ObjectSize(obj) {
   }
   return size;
 };
+
+//to hide the bloc who display data informations 
+function hideBlocb(className ,boolean){
+  //disable hidden prop on display div
+  var blocBElt = document.getElementsByClassName(className)[0];
+  blocBElt.hidden = boolean;
+}

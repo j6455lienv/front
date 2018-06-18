@@ -1,4 +1,3 @@
-/*.recette-blocb-display{
-  visibility: hidden!important;
+.recette-blocb-display h4 {
+  text-transform: uppercase;
 }
-*/
