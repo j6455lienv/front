@@ -44,7 +44,6 @@ function getRecette() {
 }
 
 function displayRecette(idToDisplay, imgSrcToDisplay, recetteToDisplay, ingredientsToDisplay) {
-
   //test foreach ok
   //console.log("id find in foreach: " + idToDisplay);
 
