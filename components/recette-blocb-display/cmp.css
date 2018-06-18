@@ -1,3 +1,17 @@
 .recette-blocb-display h4 {
   text-transform: uppercase;
 }
+
+.recette-blocb-display .img-recette {
+  border-radius: 5px !important;
+  width: 100% !important;
+  /*max-width: 478px !important;*/
+}
+
+@media (min-width: 768px) {
+  .recette-blocb-display .presentation {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row-reverse;
+  }
+}
