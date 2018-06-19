@@ -73,30 +73,3 @@ function displayRecette(idToDisplay, imgSrcToDisplay, recetteToDisplay, ingredie
   ingredientsElt.innerHTML = ingredientsToDisplay;
   divBlocIngredientsElt.appendChild(ingredientsElt);
 }
-
-function errorMessage(inputRecette) {
-  //empty bloc divs
-  $(".blocImg").html("");
-  $(".blocDetail").html("");
-  $(".blocIngredients").html("");
-
-  //store message
-  var errorMessage = "La recette " + inputRecette + " n'est pas repertoriée dans notre base de données, Veuillez recommencer";
-
-  var parentElt = document.getElementsByClassName("blocImg")[0];
-  var divElt = document.createElement("div");
-  divElt.className = "alert alert-danger";
-  divElt.innerHTML = errorMessage;
-  var strongElt = document.createElement("strong");
-  strongElt.innerHTML = "Attention ! ";
-
-  //add elements
-  divElt.insertBefore(strongElt, divElt.firstChild);
-  parentElt.appendChild(divElt);
-
-  //disable error message
-  setTimeout(function () {
-    $(".blocImg").html("");
-    hideBlocb("recette-blocb-display", true);
-  }, 3500);
-}

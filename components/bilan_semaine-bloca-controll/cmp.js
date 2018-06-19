@@ -1,22 +1,16 @@
+//add date picker component
 $('.bilan_semaine-datepicker').load("components/datepicker/cmp.html");
+$('.crud-bloca').load("components/bilan_semaine_crud/cmp.html");
 
-// $('#exampleModal').on('show.bs.modal', function (event) {
-//   var button = $(event.relatedTarget) // Button that triggered the modal
-//   var recipient = button.data('whatever') // Extract info from data-* attributes
-//   // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-//   // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-//   var modal = $(this)
-//   modal.find('.modal-title').text('New message to ' + recipient)
-//   modal.find('.modal-body input').val(recipient)
-// })
-
-//global variables for recettes page layout
+//global variable for recettes page layout
 var jsonObject = [];
-
+//object pushable to display recettes slections
+var displayTableBlocA = [];
 //attention datas à changer pour la mise en prod
 var apiUrl = "data/recettes.json";
 
 $(document).ready(function () {
+
   //xhr params
   var xhr = new XMLHttpRequest();
   xhr.open("GET", apiUrl, true);
@@ -26,36 +20,40 @@ $(document).ready(function () {
   xhr.onreadystatechange = function () {
     if (this.readyState === 4) {
       jsonObject = JSON.parse(this.responseText);
-      
-      //console.log("response_xhr: ");
-      //console.log(jsonObject);
-
       var listrecette = [];
-      //var listrecette2 = []:
       //add json object in the list of recettes
-      jsonObject.forEach(function(obj){
+      jsonObject.forEach(function (obj) {
         listrecette.push(obj.recette);
-        //listrecette2.push(
-          //{
-          //"id":obj.id,
-          //"recette":obj.recette
-          //}
-        //);
       });
-      
-      //console.log("listrecette_array for source autocompletion: ");
-      //console.log(listrecette);
-      //console.log("listrecette2_array key value: ");
-      //console.log(listrecette2);
-
       //autocomplete jquery ui library
-      $( "#recette-bloca-input" ).autocomplete({
+      $("#bilan_recette-bloca-input").autocomplete({
         source: listrecette
       });
     }
-
     if (this.status != 200) {
       console.log('error: ' + (this.status ? this.statusText : 'request failed'));
     }
   };
 });
+
+function pushRecetteInDisplayTableBlocA() {
+  var newDatePicker = document.getElementById('datepickerId');
+  var newRecette = document.getElementById('bilan_recette-bloca-input');
+
+  //control values quality 
+  if (newDatePicker.value === '' || newRecette.value === '') {
+    /* UP_implementation d'une feature errorMessage à mutualiser 
+    avec celle de error-blocb-display dans helper.js __ merci à toi */
+    console.log("error message => no value or no good recette");
+  } else {
+    //add new object to the displayTableBlocA Array 
+    displayTableBlocA.push(
+      {
+        "recetteDate": newDatePicker.value,
+        "recetteName": newRecette.value
+      }
+    );
+    console.log(displayTableBlocA);
+    createTable(displayTableBlocA);
+  }
+}

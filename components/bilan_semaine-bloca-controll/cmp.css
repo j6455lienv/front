@@ -1,4 +1,29 @@
-#plus-button{
+/**
+* JVE bilan_semaine-bloca-controll component // css 
+* warn: use class component to compartmentalize css file out SETTINGS
+* class to use: '.bilan_semaine-bloca-controll'
+*/
+
+/* ----------------------------- */
+/* SETTINGS*/
+/* ----------------------------- */
+
+/* flex blocs */
+/* .bilan_semaine-bloca-controll{
+  display: flex;
+} */
+
+/* to diplay the list autocomplete in the first plan */
+.ui-autocomplete {
+  z-index:2147483647;
+}
+
+/* end-settings */
+
+/* css modifications */
+.bilan_semaine-bloca-controll #plus-button{
   border: none;
   background-color: transparent;
+  color: #4D0091;
+  cursor: pointer; /* add pointer on the link */
 }

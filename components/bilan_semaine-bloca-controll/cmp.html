@@ -3,16 +3,18 @@
 
 <div class="bilan_semaine-bloca-controll components-border-div">
 
-  <div class="container">
-    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Créer un repas</button> -->
+  <!-- button plus to add recettes -->
+  <div>
     <button id="plus-button" type="button" data-toggle="modal" data-target="#exampleModal">
       <span data-toggle="modal">
-        <i class="fas fa-plus-circle fa-3x"></i>
+        <i class="fas fa-plus-circle fa-2x"></i>
       </span>
     </button>
-    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Open modal for @fat</button> -->
-    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Open modal for @getbootstrap</button> -->
+  </div>
+  <!-- add crud component -->
+  <div class="crud-bloca container"></div>
 
+  <div class="container">
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -24,18 +26,22 @@
           </div>
           <div class="modal-body">
             <form>
+
+              <!-- input date -->
               <div class="form-group">
-                <div id="datepicker" class="bilan_semaine-datepicker"></div>
+                <div class="bilan_semaine-datepicker"></div>
               </div>
-              <div class="recette-bloca-input container">
-                <label for="recette-bloca-input">Choisir une recette</label>
-                <input id="recette-bloca-input" class="form-control form-control-lg" onchange="javascript:getRecette();" />
+
+              <!-- input recette -->
+              <div class="bilan_recette-bloca-input container">
+                <label for="bilan_recette-bloca-input">Choisir une recette</label>
+                <input id="bilan_recette-bloca-input" class="form-control form-control-md" />
               </div>
             </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-            <button type="button" class="btn btn-primary">Créer repas</button>
+            <button type="button" class="btn btn-primary" onclick="javascript:pushRecetteInDisplayTableBlocA();">Créer repas</button>
           </div>
         </div>
       </div>
