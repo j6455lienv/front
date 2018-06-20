@@ -1,0 +1,37 @@
+<!-- add ccs script component -->
+<link rel="stylesheet" type="text/css" href="components/modal/create-modal/cmp.css">
+
+<div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Création d'un repas</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+
+          <!-- input date -->
+          <div class="form-group">
+            <div class="bilan_semaine-datepicker"></div>
+          </div>
+
+          <!-- input recette -->
+          <div class="bilan_recette-bloca-input container">
+            <label for="bilan_recette-bloca-input">Choisir une recette</label>
+            <input id="bilan_recette-bloca-input" class="form-control form-control-md" />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+        <button type="button" class="btn btn-primary" onclick="javascript:pushRecetteInDisplayTableBlocA();">Créer repas</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- add js script -->
+<script type="text/javascript" src="components/modal/create-modal/cmp.js"></script>

@@ -14,9 +14,9 @@ function randomImage(){
   var slide3Random = getRandom(1, 10);
 
   /*test que les 3 photos randomisée ne soient pas identique*/
-  while (slide1Random == slide2Random 
-    || slide1Random == slide3Random 
-    || slide2Random == slide3Random) {
+  while (slide1Random === slide2Random 
+    || slide1Random === slide3Random 
+    || slide2Random === slide3Random) {
     slide1Random = getRandom(1, 10);
     slide2Random = getRandom(1, 10);
     slide3Random = getRandom(1, 10);

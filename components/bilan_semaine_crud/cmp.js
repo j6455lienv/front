@@ -1,15 +1,9 @@
-//global list de recette
-var listDateRecette = null;
-//create Element
-var selectTbodyElt = document.getElementById('tbody-crud');
+var listDateRecette = null; //global list de recette
+var selectTbodyElt = document.getElementById('tbody-crud'); //create Element
 
 function createTable(listDateRecetteParam) {
-  // empty body
-  selectTbodyElt.innerHTML = "";
-  // set new list de recette to global
-  listDateRecette = listDateRecetteParam;
-  console.log('global listDateRecette');
-  console.log(listDateRecette);
+  selectTbodyElt.innerHTML = ""; // empty body
+  listDateRecette = listDateRecetteParam; // set new list de recette to global
 
   for (var i = 0; i < listDateRecette.length; i++) {
     //create element
@@ -18,17 +12,8 @@ function createTable(listDateRecetteParam) {
     var newDateTd = document.createElement('td');
     var newRecetteTd = document.createElement('td');
     var newEditDeleteTd = document.createElement('td');
-
     var editSpan = document.createElement('span');
     var deleteSpan = document.createElement('span');
-
-    console.log(listDateRecette.length);
-    // big array
-    // console.log("big Array in createTable(): ");
-    // console.log(listDateRecette);
-
-    //array with item
-    //console.log(listDateRecette[i]);
 
     //param Element
     newThId.scope = "col";
@@ -36,19 +21,13 @@ function createTable(listDateRecetteParam) {
     newDateTd.innerHTML = listDateRecette[i].recetteDate;
     newRecetteTd.innerHTML = listDateRecette[i].recetteName;
 
-    // buttons
+    // crud buttons
     editSpan.innerHTML = '<i class="fas fa-pencil-alt fa-1x" style="padding-right:14%"></i>';
-    // editSpan.addEventListener("click", function () {
-    //   editRow(i, listDateRecette);
-    // }, false);
+    editSpan.setAttribute("onclick", "javascript:editRow(" + i + ");");
+    editSpan.setAttribute("data-toggle", "modal");
+    editSpan.setAttribute("data-target", "#exampleModal");
 
-    // deleteSpan.onclick = deleteRow(i , listDateRecette);
     deleteSpan.innerHTML = '<i class="far fa-trash-alt fa-1x"></i>';
-    // deleteSpan.setAttribute("onclick", function () {
-    //   deleteRow(i, listDateRecette);
-    // });
-
-    // var deleteRowConcat = "'deleteRow(" + i + ", " + listDateRecette + ");"";
     deleteSpan.setAttribute("onclick", "javascript:deleteRow(" + i + ");");
 
     // test value object
@@ -68,25 +47,15 @@ function createTable(listDateRecetteParam) {
   }
 }
 
-function editRow(indexArray, listDateRecette) {
+//to edit line in the crud table
+function editRow(indexArray) {
   console.log("function edit, index tableau: " + indexArray);
-  console.log(recetteObj);
 }
 
+// to delete line in the crud table 
 function deleteRow(indexArray) {
-  console.log('**** DELETE FUNCTION ****');
-  // alert("delete function ok");
-  // console.log("delete function ok");
-  // console.log(recetteObj);
-
-  // controll
-  console.log('old Array: ');
-  console.log(listDateRecette);
-
+  //delete line with index
   listDateRecette.splice(indexArray, 1);
-
-  console.log('new Array: ');
-  console.log(listDateRecette);
-
+  //update table
   createTable(listDateRecette);
 }

@@ -1,6 +1,7 @@
 //add date picker component
-$('.bilan_semaine-datepicker').load("components/datepicker/cmp.html");
 $('.crud-bloca').load("components/bilan_semaine_crud/cmp.html");
+$('#container-modal-create-div').load("components/modal/create-modal/cmp.html");
+$('#container-modal-edit-div').load("components/modal/edit-modal/cmp.html");
 
 //global variable for recettes page layout
 var jsonObject = [];
@@ -10,7 +11,6 @@ var displayTableBlocA = [];
 var apiUrl = "data/recettes.json";
 
 $(document).ready(function () {
-
   //xhr params
   var xhr = new XMLHttpRequest();
   xhr.open("GET", apiUrl, true);
@@ -47,12 +47,10 @@ function pushRecetteInDisplayTableBlocA() {
     console.log("error message => no value or no good recette");
   } else {
     //add new object to the displayTableBlocA Array 
-    displayTableBlocA.push(
-      {
-        "recetteDate": newDatePicker.value,
-        "recetteName": newRecette.value
-      }
-    );
+    displayTableBlocA.push({
+      "recetteDate": newDatePicker.value,
+      "recetteName": newRecette.value
+    });
     console.log(displayTableBlocA);
     createTable(displayTableBlocA);
   }
