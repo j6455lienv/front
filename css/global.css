@@ -25,11 +25,8 @@ body {
 }
 
 /* @media */
-
 /* 415px => tel iphone 6 plus max */
-
 /* fluid-container make */
-
 @media (max-width: 992px) {
   #global-container {
     width: 100% !important;
