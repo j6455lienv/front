@@ -1,7 +1,19 @@
 var listDateRecette = null; //global list de recette
 var selectTbodyElt = document.getElementById('tbody-crud'); //create Element
 
+function handlerDisplayingModal(actionType) {
+  //show / hide modal buttons  
+  if(actionType === "create"){
+    $('#button-modal-create').show();
+    $('#button-modal-edit').hide();
+  } else if (actionType === "edit"){
+    $('#button-modal-create').hide();
+    $('#button-modal-edit').show();
+  }
+} 
+
 function createTable(listDateRecetteParam) {
+
   selectTbodyElt.innerHTML = ""; // empty body
   listDateRecette = listDateRecetteParam; // set new list de recette to global
 
@@ -22,10 +34,10 @@ function createTable(listDateRecetteParam) {
     newRecetteTd.innerHTML = listDateRecette[i].recetteName;
 
     // crud buttons
-    editSpan.innerHTML = '<i class="fas fa-pencil-alt fa-1x" style="padding-right:14%"></i>';
+    editSpan.innerHTML = '<i class="fas fa-pencil-alt fa-1x" style="padding-right:18%"></i>';
     editSpan.setAttribute("onclick", "javascript:editRow(" + i + ");");
     editSpan.setAttribute("data-toggle", "modal");
-    editSpan.setAttribute("data-target", "#exampleModal");
+    editSpan.setAttribute("data-target", "#dynamicallModal");
 
     deleteSpan.innerHTML = '<i class="far fa-trash-alt fa-1x"></i>';
     deleteSpan.setAttribute("onclick", "javascript:deleteRow(" + i + ");");
@@ -49,7 +61,27 @@ function createTable(listDateRecetteParam) {
 
 //to edit line in the crud table
 function editRow(indexArray) {
-  console.log("function edit, index tableau: " + indexArray);
+  //console.log("function edit, index tableau: " + indexArray);
+
+  // handle modal
+  $('#dynamicallModal').on('show.bs.modal', function (event) {
+    handlerDisplayingModal("edit");//hide create button
+
+    var button = $(event.relatedTarget); // Button that triggered the modal
+
+    // hiddenCreateButton data bidding
+    var boolCreateButt = button.data('hiddenCreateButton') // Extract info from data-* attributes
+
+    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+    var modal = $(this);
+    modal.find('.modal-title').text('Modifier la Recette à l\'id : ' + indexArray);
+
+    // datepicker id to put value: datepickerId
+    modal.find('#datepickerId').val(listDateRecette[indexArray].recetteDate);
+    // input Recette id to put value: bilan_recette-bloca-input
+    modal.find('#bilan_recette-bloca-input').val(listDateRecette[indexArray].recetteName);
+  })
 }
 
 // to delete line in the crud table 

@@ -5,7 +5,7 @@
 
   <!-- button plus to add recettes -->
   <div class="container">
-    <button id="plus-button" type="button" data-toggle="modal" data-target="#createModal">
+    <button id="plus-button" onclick="javascript:handlerDisplayingModal('create');" type="button" data-toggle="modal" data-target="#dynamicallModal">
       <span data-toggle="modal">
         <i class="fas fa-plus-circle fa-2x"></i>
       </span>
@@ -15,13 +15,12 @@
   <!-- import crud -->
   <div class="crud-bloca container table-container"></div>
 
-  <!-- import modal-create -->
-  <div id="container-modal-create-div" class="container">
-  
-  <!-- import modal-create -->
-  <div id="container-modal-edit-div" class="container">
-    
-  </div>
+  <!-- import modal -->
+  <div id="container-modal-div" class="container"></div>
+
+  <!-- import modal-test -->
+  <div id="container-modal-test-div" class="container"></div>
+
 </div>
 
 <!-- add js script -->

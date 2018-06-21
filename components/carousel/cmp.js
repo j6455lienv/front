@@ -31,4 +31,5 @@ function randomImage(){
   //controle fonctionnement random different à chaque F5
   //console.log(slide1Random + ',' + slide2Random + ',' + slide3Random);
 }
+//fire function
 randomImage();
