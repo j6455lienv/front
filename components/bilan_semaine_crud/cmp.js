@@ -1,16 +1,5 @@
 var listDateRecette = null; //global list de recette
-var selectTbodyElt = document.getElementById('tbody-crud'); //create Element
-
-function handlerDisplayingModal(actionType) {
-  //show / hide modal buttons  
-  if(actionType === "create"){
-    $('#button-modal-create').show();
-    $('#button-modal-edit').hide();
-  } else if (actionType === "edit"){
-    $('#button-modal-create').hide();
-    $('#button-modal-edit').show();
-  }
-} 
+var selectTbodyElt = document.getElementById('tbody-crud'); //create Element 
 
 function createTable(listDateRecetteParam) {
 
@@ -61,27 +50,39 @@ function createTable(listDateRecetteParam) {
 
 //to edit line in the crud table
 function editRow(indexArray) {
-  //console.log("function edit, index tableau: " + indexArray);
-
+  
   // handle modal
   $('#dynamicallModal').on('show.bs.modal', function (event) {
-    handlerDisplayingModal("edit");//hide create button
+    handlerDisplayingModal("edit"); //hide create button
 
     var button = $(event.relatedTarget); // Button that triggered the modal
-
-    // hiddenCreateButton data bidding
-    var boolCreateButt = button.data('hiddenCreateButton') // Extract info from data-* attributes
 
     // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
     // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
     var modal = $(this);
     modal.find('.modal-title').text('Modifier la Recette à l\'id : ' + indexArray);
 
+    // display values
     // datepicker id to put value: datepickerId
     modal.find('#datepickerId').val(listDateRecette[indexArray].recetteDate);
     // input Recette id to put value: bilan_recette-bloca-input
     modal.find('#bilan_recette-bloca-input').val(listDateRecette[indexArray].recetteName);
-  })
+  });
+
+  // edit recette fired by onclick function
+  $("#button-modal-edit").click(function () {
+    // update array
+    listDateRecette[indexArray].recetteDate = 
+    document.getElementById("datepickerId").value;
+    listDateRecette[indexArray].recetteName = 
+    document.getElementById("bilan_recette-bloca-input").value;
+
+    console.log(indexArray);
+    console.log(listDateRecette);
+
+    //update table
+    createTable(listDateRecette);
+  });
 }
 
 // to delete line in the crud table 
@@ -90,4 +91,15 @@ function deleteRow(indexArray) {
   listDateRecette.splice(indexArray, 1);
   //update table
   createTable(listDateRecette);
+}
+
+//handling buttons in modal
+function handlerDisplayingModal(actionType) {
+  if (actionType === "create") {
+    $('#button-modal-create').show();
+    $('#button-modal-edit').hide();
+  } else if (actionType === "edit") {
+    $('#button-modal-create').hide();
+    $('#button-modal-edit').show();
+  }
 }
