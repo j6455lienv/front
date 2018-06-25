@@ -35,23 +35,3 @@ $(document).ready(function () {
     }
   };
 });
-
-function pushRecetteInDisplayTableBlocA() {
-  var newDatePicker = document.getElementById('datepickerId');
-  var newRecette = document.getElementById('bilan_recette-bloca-input');
-
-  //control values quality 
-  if (newDatePicker.value === '' || newRecette.value === '') {
-    /* UP_implementation d'une feature errorMessage à mutualiser 
-    avec celle de error-blocb-display dans helper.js __ merci à toi */
-    console.log("error message => no value or no good recette");
-  } else {
-    //add new object to the displayTableBlocA Array 
-    displayTableBlocA.push({
-      "recetteDate": newDatePicker.value,
-      "recetteName": newRecette.value
-    });
-    console.log(displayTableBlocA);
-    createTable(displayTableBlocA);
-  }
-}

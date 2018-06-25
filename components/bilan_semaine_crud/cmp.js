@@ -1,5 +1,6 @@
 var listDateRecette = null; //global list de recette
-var selectTbodyElt = document.getElementById('tbody-crud'); //create Element 
+var selectTbodyElt = document.getElementById('tbody-crud'); //create Element
+var currentIndex = null;
 
 function createTable(listDateRecetteParam) {
 
@@ -24,9 +25,9 @@ function createTable(listDateRecetteParam) {
 
     // crud buttons
     editSpan.innerHTML = '<i class="fas fa-pencil-alt fa-1x" style="padding-right:18%"></i>';
-    editSpan.setAttribute("onclick", "javascript:editRow(" + i + ");");
+    editSpan.setAttribute("onclick", "javascript:showModal('edit'," + i + ");");
     editSpan.setAttribute("data-toggle", "modal");
-    editSpan.setAttribute("data-target", "#dynamicallModal");
+    //editSpan.setAttribute("data-target", "#dynamicallModal");
 
     deleteSpan.innerHTML = '<i class="far fa-trash-alt fa-1x"></i>';
     deleteSpan.setAttribute("onclick", "javascript:deleteRow(" + i + ");");
@@ -48,41 +49,40 @@ function createTable(listDateRecetteParam) {
   }
 }
 
+function createRow() {
+  var newDatePicker = document.getElementById('datepickerId');
+  var newRecette = document.getElementById('bilan_recette-bloca-input');
+
+  //control values quality 
+  if (newDatePicker.value === '' || newRecette.value === '') {
+    /* UP_implementation d'une feature errorMessage à mutualiser 
+    avec celle de error-blocb-display dans helper.js __ merci à toi */
+    console.log("error message => no value or no good recette");
+  } else {
+    //add new object to the displayTableBlocA Array 
+    displayTableBlocA.push({
+      "recetteDate": newDatePicker.value,
+      "recetteName": newRecette.value
+    });
+    console.log(displayTableBlocA);
+    createTable(displayTableBlocA);
+  }
+}
+
 //to edit line in the crud table
-function editRow(indexArray) {
+function editRow() {
+
+  var recetteDate = document.getElementById("datepickerId").value;
+  console.log(recetteDate);
+  var recetteName = document.getElementById("bilan_recette-bloca-input").value;
+  console.log(recetteName);
   
-  // handle modal
-  $('#dynamicallModal').on('show.bs.modal', function (event) {
-    handlerDisplayingModal("edit"); //hide create button
+  // update array
+  listDateRecette[currentIndex].recetteDate = recetteDate;
+  listDateRecette[currentIndex].recetteName = recetteName;
 
-    var button = $(event.relatedTarget); // Button that triggered the modal
-
-    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-    var modal = $(this);
-    modal.find('.modal-title').text('Modifier la Recette à l\'id : ' + indexArray);
-
-    // display values
-    // datepicker id to put value: datepickerId
-    modal.find('#datepickerId').val(listDateRecette[indexArray].recetteDate);
-    // input Recette id to put value: bilan_recette-bloca-input
-    modal.find('#bilan_recette-bloca-input').val(listDateRecette[indexArray].recetteName);
-  });
-
-  // edit recette fired by onclick function
-  $("#button-modal-edit").click(function () {
-    // update array
-    listDateRecette[indexArray].recetteDate = 
-    document.getElementById("datepickerId").value;
-    listDateRecette[indexArray].recetteName = 
-    document.getElementById("bilan_recette-bloca-input").value;
-
-    console.log(indexArray);
-    console.log(listDateRecette);
-
-    //update table
-    createTable(listDateRecette);
-  });
+  //update table
+  createTable(listDateRecette);
 }
 
 // to delete line in the crud table 
@@ -91,15 +91,4 @@ function deleteRow(indexArray) {
   listDateRecette.splice(indexArray, 1);
   //update table
   createTable(listDateRecette);
-}
-
-//handling buttons in modal
-function handlerDisplayingModal(actionType) {
-  if (actionType === "create") {
-    $('#button-modal-create').show();
-    $('#button-modal-edit').hide();
-  } else if (actionType === "edit") {
-    $('#button-modal-create').hide();
-    $('#button-modal-edit').show();
-  }
 }
