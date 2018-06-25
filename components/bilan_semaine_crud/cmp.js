@@ -1,11 +1,11 @@
-var listDateRecette = null; //global list de recette
-var selectTbodyElt = document.getElementById('tbody-crud'); //create Element
+//global variables
+var listDateRecette = [];
+var selectTbodyElt = document.getElementById('tbody-crud');
 var currentIndex = null;
 
-function createTable(listDateRecetteParam) {
+function createTable() {
 
   selectTbodyElt.innerHTML = ""; // empty body
-  listDateRecette = listDateRecetteParam; // set new list de recette to global
 
   for (var i = 0; i < listDateRecette.length; i++) {
     //create element
@@ -60,12 +60,12 @@ function createRow() {
     console.log("error message => no value or no good recette");
   } else {
     //add new object to the displayTableBlocA Array 
-    displayTableBlocA.push({
+    listDateRecette.push({
       "recetteDate": newDatePicker.value,
       "recetteName": newRecette.value
     });
-    console.log(displayTableBlocA);
-    createTable(displayTableBlocA);
+    console.log(listDateRecette);
+    createTable();
   }
 }
 
@@ -82,7 +82,9 @@ function editRow() {
   listDateRecette[currentIndex].recetteName = recetteName;
 
   //update table
-  createTable(listDateRecette);
+  createTable();
+
+  modal.modal("hide");
 }
 
 // to delete line in the crud table 
@@ -90,5 +92,5 @@ function deleteRow(indexArray) {
   //delete line with index
   listDateRecette.splice(indexArray, 1);
   //update table
-  createTable(listDateRecette);
+  createTable();
 }
