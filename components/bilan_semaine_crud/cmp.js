@@ -7,6 +7,11 @@ function createTable() {
 
   selectTbodyElt.innerHTML = ""; // empty body
 
+  //test sorting array
+  // var mapAsc = new Array([...listDateRecette.entries()].sort());
+  // console.log('map Asc : ');
+  // console.log(mapAsc);
+
   for (var i = 0; i < listDateRecette.length; i++) {
     //create element
     var newTr = document.createElement('tr');
@@ -73,10 +78,8 @@ function createRow() {
 function editRow() {
 
   var recetteDate = document.getElementById("datepickerId").value;
-  console.log(recetteDate);
   var recetteName = document.getElementById("bilan_recette-bloca-input").value;
-  console.log(recetteName);
-  
+
   // update array
   listDateRecette[currentIndex].recetteDate = recetteDate;
   listDateRecette[currentIndex].recetteName = recetteName;
