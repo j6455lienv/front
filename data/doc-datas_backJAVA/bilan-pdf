@@ -1,0 +1,15 @@
+// post json POST
+
+[{
+    "idRecette": 1,
+    "nomRecette": "Salade césar"
+  },
+  {
+    "idRecette": 2,
+    "nomRecette": "recette"
+  }
+]
+
+// get json GET
+
+// return pdf file

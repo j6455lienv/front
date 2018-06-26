@@ -1,0 +1,34 @@
+// post json POST
+
+[{
+    "idRecette": 1,
+    "nomRecette": "Salade césar"
+  },
+  {
+    "idRecette": 2,
+    "nomRecette": "recette"
+  }
+]
+
+// get json GET
+{
+  "listeRecettes": [{
+      "idRecette": 1,
+      "recetteIngredients": [],
+      "nomRecette": "Salade césar",
+      "tempsPreparation": null,
+      "minerauxParPortion": null,
+      "vitaminesParPortion": null
+    },
+    {
+      "idRecette": 2,
+      "recetteIngredients": [],
+      "nomRecette": "recette",
+      "tempsPreparation": null,
+      "minerauxParPortion": null,
+      "vitaminesParPortion": null
+    }
+  ],
+  "bilanMineral": 8761,
+  "bilanVitaminal": 23513
+}

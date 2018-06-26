@@ -1,0 +1,24 @@
+1 method GET
+3 method POST
+
+page recette :
+
+  * method GET
+  * url : /recette/id (id d'une recette)
+  * renvoie une recette dans son format json
+
+  * method POST
+  * url : /recette/id/pdf
+  * renvoie le pdf en ayant passé l'id dans l'url
+  
+page bilan :
+
+  * method POST 
+  * url : /bilan
+  * voir bilan.json
+  * renvoi un bilan
+
+  * method POST
+  * url : /bilan/pdf
+  * voir bilan-pdf.json
+  * renvoi le pdf bilan
