@@ -10,3 +10,15 @@
 * http://visjs.org/ //dashboard js framework
 * https://d3js.org/ //3d
 * https://projects.lukehaas.me/css-loaders/ //spinner idea to calcul nutrizzzz
+
+#### attention !! config Spring / tomcat
+
+#### erreur 1 :
+  * Header set Access-Control-Allow-Origin "*"
+  * en attendant un hack possible // telechager le module chrome Allow-Control-Allow-Origin: *
+  https://community.powerbi.com/t5/Developer/Error-No-Access-Control-Allow-Origin-header-is-present-on-the/td-p/350280
+  https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+
+#### erreur 1 :
+  * error 415 => serialize
+  * https://stackoverflow.com/questions/11492325/post-json-fails-with-415-unsupported-media-type-spring-3-mvc

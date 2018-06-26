@@ -1,3 +1,5 @@
+// choses prévu
+
 1 method GET
 3 method POST
 
@@ -22,3 +24,16 @@ page bilan :
   * url : /bilan/pdf
   * voir bilan-pdf.json
   * renvoi le pdf bilan
+
+// ATTENTION, à penser
+
+  * Une methode get qui me permet de recevoir une Map<id, Nom Recettes>
+  * à remplacer par la /recette/search?... existante (le front gere l'autocompletion)
+
+// enable CORS 
+dans .htaccess pour un apache ou /etc/apache/https.conf ou /etc/apache2/apache2.conf
+  <IfModule mod_headers.c>
+      Header set Access-Control-Allow-Origin "*"
+      Header set Access-Control-Allow-Credentials true
+  </IfModule>
+  en attendant un hack possible // telechager le module chrome Allow-Control-Allow-Origin: * 
