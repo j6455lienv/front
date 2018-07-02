@@ -32,3 +32,35 @@ function hideBlocb(classIdName, boolean) {
   var blocBElt = document.getElementsByClassName(classIdName)[0];
   blocBElt.hidden = boolean;
 }
+
+function renderPDF(pPdfData, canvasContainer, options) {
+  var options = options || {
+    scale: 1
+  };
+
+  function renderPage(page) {
+    var viewport = page.getViewport(options.scale);
+    var canvas = document.createElement('canvas');
+    var ctx = canvas.getContext('2d');
+    var renderContext = {
+      canvasContext: ctx,
+      viewport: viewport
+    };
+
+    canvas.height = viewport.height;
+    canvas.width = viewport.width;
+    canvasContainer.appendChild(canvas);
+
+    page.render(renderContext);
+  }
+
+  function renderPages(pdfDoc) {
+    for (var num = 1; num <= pdfDoc.numPages; num++)
+      pdfDoc.getPage(num).then(renderPage);
+  }
+  // PDFJS.workerSrc = "lib/pdfjs-dist/build/pdf.worker.js";
+  PDFJS.disableWorker = true;
+  PDFJS.getDocument({
+    data: pPdfData
+  }).then(renderPages);
+}

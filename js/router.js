@@ -5,8 +5,6 @@
  */
 
 function route(pageName){
-  let pathname = "/nutrimeal/";
-  
 	//load the html and js files of the the route 
   $("#page").load('./views/'+pageName+'/'+pageName+'.html');
   getScript('views/'+pageName+'/'+pageName+'.js');

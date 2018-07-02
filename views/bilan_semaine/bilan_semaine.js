@@ -3,3 +3,24 @@ $(document).ready(function () {
   $("#bilan_semaine-bloca-controll").load("./components/bilan_semaine-bloca-controll/cmp.html");
   $("#bilan_semaine-blocb-display").load("./components/bilan_semaine-blocb-display/cmp.html");
 });
+
+var responseObj = {};
+
+//PDF => export pdf, renvoi le code source pdf dans le reponse 
+// => reste à decoder et generer le pdf 
+function exportPdfBilan() {
+  ajaxPOSTgetPDF("bilan/pdf", dataEchantillon, function (response) {
+    renderPDF(response, document.getElementById('holderBilan'));
+    // console.log(response);
+    // console.log(PDFJS.PDFWorker);
+  });
+}
+
+//echantillon -> test
+var dataEchantillon = [{
+  "idRecette": 1,
+  "nomRecette": "Salade césar"
+}, {
+  "idRecette": 2,
+  "nomRecette": "recette"
+}];

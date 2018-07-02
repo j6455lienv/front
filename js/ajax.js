@@ -1,35 +1,20 @@
-var data = [{
-  "idRecette": 1,
-  "nomRecette": "Salade césar"
-}, {
-  "idRecette": 2,
-  "nomRecette": "recette"
-}];
+var hostPath = "http://localhost:8080/";
 
-// test fonction pour appeler bilan
-function post() {
-  var strData = JSON.stringify(data);
-  console.log(strData);
+/** ajax GET
+ * input: JSON
+ * output: JSON
+ */
+function ajaxGetgetJSON(url, data, callback) {
+  //TODO
+};
 
-  var commande = new FormData();
-  commande.append("idRecette", "1");
-  commande.append("nomRecette", "recette");
-  // Envoi de l'objet FormData au serveur
-  ajaxPost("http://localhost:8080/bilan", data,
-    function (reponse) {
-      // Affichage dans la console en cas de succès
-      console.log("Commande envoyée au serveur");
-    }
-  );
-}
-
-
-// Exécute un appel AJAX POST
-// Prend en paramètres l'URL cible, la donnée à envoyer et la fonction callback appelée en cas de succès
-// Le paramètre isJson permet d'indiquer si l'envoi concerne des données JSON
-function ajaxPost(url, data, callback, isJson) {
+/** ajax GET
+ * input: JSON
+ * output: JSON
+ */
+function ajaxPostgetJSON(url, data, callback) {
   var req = new XMLHttpRequest();
-  req.open("POST", url);
+  req.open("GET", url);
   req.addEventListener("load", function () {
     if (req.status >= 200 && req.status < 400) {
       // Appelle la fonction callback en lui passant la réponse de la requête
@@ -37,48 +22,42 @@ function ajaxPost(url, data, callback, isJson) {
     } else {
       console.error(req.status + " " + req.statusText + " " + url);
     }
-  }, true);
+  });
   req.addEventListener("error", function () {
     console.error("Erreur réseau avec l'URL " + url);
   });
-  if (isJson) {
-    // Définit le contenu de la requête comme étant du JSON
-    req.setRequestHeader("Content-Type", "application/json");
-    // Transforme la donnée du format JSON vers le format texte avant l'envoi
-    data = JSON.stringify(data);
-  }
+
+  // Définit le contenu de la requête comme étant du JSON
+  req.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  // Transforme la donnée du format JSON vers le format texte avant l'envoi
+  data = JSON.stringify(data);
   req.send(data);
 }
 
-// jquery ajax exemple
-// $.postJSON = function(url, data, callback) {
-//   return jQuery.ajax({
-//   'type': 'POST',
-//   'url': url,
-//   'contentType': 'application/json',
-//   'data': JSON.stringify(data),
-//   'dataType': 'json',
-//   'success': callback
-//   });
-// };
+/** ajax POST
+ * input: JSON
+ * output: binary PDF
+ */
+function ajaxPOSTgetPDF(path, data, callback) {
+  var url = hostPath + path;
 
-//
-//exemple test js
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", url);
+  xhr.addEventListener("load", function () {
+    if (xhr.status >= 200 && xhr.status < 400) {
+      // Appelle la fonction callback en lui passant la réponse de la requête
+      callback(xhr.responseText);
 
-// // AJAX GET
-// function ajaxGet(url, callback) {
-//   var req = new XMLHttpRequest();
-//   req.open("GET", url);
-//   req.addEventListener("load", function () {
-//     if (req.status >= 200 && req.status < 400) {
-//       // Appelle la fonction callback en lui passant la réponse de la requête
-//       callback(req.responseText);
-//     } else {
-//       console.error(req.status + " " + req.statusText + " " + url);
-//     }
-//   });
-//   req.addEventListener("error", function () {
-//     console.error("Erreur réseau avec l'URL " + url);
-//   });
-//   req.send(null);
-// }
+    } else {
+      console.error(xhr.status + " " + xhr.statusText + " " + url);
+    }
+  });
+  xhr.addEventListener("error", function () {
+    console.error("Erreur réseau avec l'URL " + url);
+  });
+
+  xhr.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+  xhr.overrideMimeType('text/plain; charset=x-user-defined');
+
+  xhr.send(JSON.stringify(data));
+}
