@@ -4,13 +4,11 @@ $(document).ready(function () {
   $("#bilan_semaine-blocb-display").load("./components/bilan_semaine-blocb-display/cmp.html");
 });
 
-var responseObj = {};
-
 //PDF => export pdf, renvoi le code source pdf dans le reponse 
 // => reste à decoder et generer le pdf 
-function exportPdfBilan() {
+function exportPdfBilanPdf() {
   ajaxPOSTgetPDF("bilan/pdf", dataEchantillon, function (response) {
-    renderPDF(response, document.getElementById('holderBilan'));
+    renderPDF(response, document.getElementById('holderBilanPdf'));
     // console.log(response);
     // console.log(PDFJS.PDFWorker);
   });

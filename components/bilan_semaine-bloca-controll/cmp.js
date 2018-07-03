@@ -5,7 +5,7 @@ $('#container-modal-div').load("components/modal/cmp.html");
 
 //global variable for recettes page layout
 var jsonObject = [];
-//object pushable to display recettes slections
+//object pushable to display recettes selections
 var displayTableBlocA = [];
 //attention datas à changer pour la mise en prod
 var apiUrl = "data/recettes.json";

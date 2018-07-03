@@ -66,8 +66,12 @@ function createRow() {
   } else {
     //add new object to the displayTableBlocA Array 
     listDateRecette.push({
+      // modify object
       "recetteDate": newDatePicker.value,
       "recetteName": newRecette.value
+      //----//
+      // "idRecette": 1,
+      // "nomRecette": "test"
     });
     console.log(listDateRecette);
     createTable();

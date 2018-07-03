@@ -1,49 +1,21 @@
-//global variables for recettes page layout
-var jsonObject = [];
+$("#recette-bloca-input").on('keyup', function () {
+  var listRecette = [];
+  var inputValue = document.getElementById("recette-bloca-input").value;
 
-//attention datas à changer pour la mise en prod
-var apiUrl = "data/recettes.json";
+  ajaxGETgetJSON("recette/search?string=" + inputValue, function (response) {
+    JSONresponse = JSON.parse(response);
 
-$(document).ready(function () {
-  //xhr params
-  var xhr = new XMLHttpRequest();
-  xhr.open("GET", apiUrl, true);
-  xhr.setRequestHeader('Content-Type', 'application/json;charset=utf-8;');
-  xhr.send();
-
-  xhr.onreadystatechange = function () {
-    if (this.readyState === 4) {
-      jsonObject = JSON.parse(this.responseText);
-      
-      //console.log("response_xhr: ");
-      //console.log(jsonObject);
-
-      var listrecette = [];
-      //var listrecette2 = []:
-      //add json object in the list of recettes
-      jsonObject.forEach(function(obj){
-        listrecette.push(obj.recette);
-        //listrecette2.push(
-          //{
-          //"id":obj.id,
-          //"recette":obj.recette
-          //}
-        //);
-      });
-      
-      //console.log("listrecette_array for source autocompletion: ");
-      //console.log(listrecette);
-      //console.log("listrecette2_array key value: ");
-      //console.log(listrecette2);
-
-      //autocomplete jquery ui library
-      $( "#recette-bloca-input" ).autocomplete({
-        source: listrecette
-      });
+    //push recette on array to display autocomplete function
+    for (var i = 0; i < JSONresponse.numberOfElements; i++) {
+      listRecette.push(JSONresponse.content[i].nomRecette);
     }
 
-    if (this.status != 200) {
-      console.log('error: ' + (this.status ? this.statusText : 'request failed'));
-    }
-  };
+    // console.log(listRecette);
+    // console.log(JSONresponse);
+
+    // autocomplete jquery ui library
+    $("#recette-bloca-input").autocomplete({
+      source: listRecette
+    });
+  });
 });
