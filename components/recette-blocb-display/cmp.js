@@ -7,7 +7,6 @@ function displayRecette() {
 
   // store values of controll bloc
   var inputRecette = document.getElementById("recette-bloca-input").value;
-  var inputNbPersonnes = document.getElementById("recette-bloca-select").value;
 
   // compare recette name to know id
   var idRecette = compareNomRecetteToKnowIdRecette(JSONresponse, inputRecette);
@@ -22,7 +21,14 @@ function displayRecette() {
     }
   });
 
-
+  var inputNbPersoRecette = document.getElementById("recette-bloca-select").value;
+  //PDF => export pdf, renvoi le code source pdf dans le reponse 
+  // => reste à decoder et generer le pdf 
+  $("#btnExportPdfRecette").on("click", function () {
+    ajaxGETgetPDF("recette/" + idRecette + "/nbPersonnes/" + inputNbPersoRecette + "/pdf", function (response) {
+      renderPDF(response, document.getElementById('holderRecette'));
+    });
+  });
 }
 
 /*

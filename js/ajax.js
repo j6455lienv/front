@@ -29,15 +29,13 @@ function ajaxGETgetJSON(path, callback) {
 /** ajax GET
  * return: PDF
  */
-function ajaxGETgetJSON(path, callback) {
+function ajaxGETgetPDF(path, callback) {
   var url = hostPath + path;
   var xhr = new XMLHttpRequest();
   xhr.open("GET", url);
   xhr.addEventListener("load", function () {
     if (xhr.status >= 200 && xhr.status < 400) {
-      // Appelle la fonction callback en lui passant la réponse de la requête
       callback(xhr.responseText);
-
     } else {
       console.error(xhr.status + " " + xhr.statusText + " " + url);
     }
@@ -46,9 +44,8 @@ function ajaxGETgetJSON(path, callback) {
     console.error("Erreur réseau avec l'URL " + url);
   });
 
-  // Définit le contenu de la requête comme étant du JSON
-  xhr.setRequestHeader("Content-Type", "application/json");
-  // Transforme la donnée du format JSON vers le format texte avant l'envoi
+  xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  xhr.overrideMimeType('text/plain; charset=x-user-defined');
   xhr.send();
 };
 
