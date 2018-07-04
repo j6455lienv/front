@@ -16,6 +16,16 @@ function getScript(scriptLink) {
   });
 }
 
+// compare recette name with object to know idRecette
+function compareNomRecetteToKnowIdRecette(JSONresponse, inputRecette) {
+  for (let i = 0; i < JSONresponse.numberOfElements; i++) {
+    //compare the input recette with the recettes in jsonObject to find id
+    if (inputRecette === JSONresponse.content[i].nomRecette) {
+      return JSONresponse.content[i].idRecette;
+    }
+  }
+}
+
 //to hide the bloc who display data informations 
 function hideBlocb(classIdName, boolean) {
   //disable hidden prop on display div

@@ -9,16 +9,8 @@ function displayRecette() {
   var inputRecette = document.getElementById("recette-bloca-input").value;
   var inputNbPersonnes = document.getElementById("recette-bloca-select").value;
 
-  // console.log(toDisplay);
-  var idRecette = null;
-
-  //use helper ObjectSize to count size of jsonObject
-  for (let i = 0; i < JSONresponse.numberOfElements; i++) {
-    //compare the input recette with the recettes in jsonObject to find id
-    if (inputRecette === JSONresponse.content[i].nomRecette) {
-      idRecette = JSONresponse.content[i].idRecette;
-    }
-  }
+  // compare recette name to know id
+  var idRecette = compareNomRecetteToKnowIdRecette(JSONresponse, inputRecette);
 
   ajaxGETgetJSON("recette/" + idRecette, function (response) {
     // console.log(JSON.parse(response));
@@ -30,25 +22,25 @@ function displayRecette() {
     }
   });
 
-  
+
 }
 
 /*
-* values of recetteObj
-* recetteObj.idRecette //int
-* recetteObj.recetteIngredients[idRecette] // int
-* recetteObj.recetteIngredients[idIngredient] // int
-* recetteObj.recetteIngredients[quantite] // int
-* recetteObj.nomRecette // str
-* recetteObj.tempsPreparation // int
-* recetteObj.minerauxParPortion // int
-* recetteObj.vitaminesParPortion // int
-* recetteObj.base64ImageCode // str
-*
-*/
+ * values of recetteObj
+ * recetteObj.idRecette //int
+ * recetteObj.recetteIngredients[idRecette] // int
+ * recetteObj.recetteIngredients[idIngredient] // int
+ * recetteObj.recetteIngredients[quantite] // int
+ * recetteObj.nomRecette // str
+ * recetteObj.tempsPreparation // int
+ * recetteObj.minerauxParPortion // int
+ * recetteObj.vitaminesParPortion // int
+ * recetteObj.base64ImageCode // str
+ *
+ */
 function elementsDisplayRecette(recetteObj) {
-  // shox displat bloc
-  hideBlocb("recette-blocb-display" ,false);
+  // show display bloc
+  hideBlocb("recette-blocb-display", false);
 
   $(".blocTitle").html("");
   var divBlocDetailElt = document.getElementsByClassName("blocTitle")[0];
