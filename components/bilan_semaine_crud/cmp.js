@@ -5,16 +5,7 @@ var currentIndex = null;
 
 function createTable() {
 
-  console.log("create table function: ");
-  console.log(JSONresponse);
-  console.log(JSONresponse.content[0].idRecette);
-
   selectTbodyElt.innerHTML = ""; // empty body
-
-  //test sorting array
-  // var mapAsc = new Array([...listDateRecette.entries()].sort());
-  // console.log('map Asc : ');
-  // console.log(mapAsc);
 
   for (var i = 0; i < listDateRecette.length; i++) {
     //create element
@@ -42,11 +33,6 @@ function createTable() {
     deleteSpan.innerHTML = '<i class="far fa-trash-alt fa-1x"></i>';
     deleteSpan.setAttribute("onclick", "javascript:deleteRow(" + i + ");");
 
-    // test value object
-    // console.log(listDateRecette[i].recetteDate);
-    // console.log(newDateTd);
-    // console.log(newRecetteTd);
-
     //add child to parent body
     newEditDeleteTd.appendChild(editSpan);
     newEditDeleteTd.appendChild(deleteSpan);
@@ -62,17 +48,23 @@ function createTable() {
 }
 
 function createRow() {
-  var newDatePicker = document.getElementById('datepickerId');
-  var newRecette = document.getElementById('bilan_recette-bloca-input');
+  var dateRecetteCreate = document.getElementById('datepickerId').value;
+  var nomRecetteCreate = document.getElementById('bilan_recette-bloca-input').value;
+  var idRecetteCreate = null;
 
   // compare recette name to know id
   console.log(JSONresponse);
-  console.log(newRecette);
-  var idRecette = compareNomRecetteToKnowIdRecette(JSONresponse, newRecette);
+  console.log("Nom de la recette create: "+nomRecetteCreate);
 
-  console.log("id recette recupérée: "+idRecette);
+  for (let i = 0; i < JSONresponse.numberOfElements; i++) {
+    if (nomRecetteCreate === JSONresponse.content[i].nomRecette) {
+      idRecetteCreate = JSONresponse.content[i].idRecette;
+    }
+  }
+
+  console.log("id recette recupérée: "+idRecetteCreate);
   //control values quality 
-  if (newDatePicker.value === '' || newRecette.value === '') {
+  if (dateRecetteCreate === '' || nomRecetteCreate === '') {
     /* UP_implementation d'une feature errorMessage à mutualiser 
     avec celle de error-blocb-display dans helper.js __ merci à toi */
     console.log("error message => no value or no good recette");
@@ -80,13 +72,14 @@ function createRow() {
     //add new object to the displayTableBlocA Array 
     listDateRecette.push({
       // modify object
-      "idRecette": idRecette,
-      "nomRecette": newRecette.value,
-      "dateRecette": newDatePicker.value
+      "idRecette": idRecetteCreate,
+      "nomRecette": nomRecetteCreate,
+      "dateRecette": dateRecetteCreate
       //----//
       // "idRecette": 1,
       // "nomRecette": "test"
     });
+    console.log(idRecetteCreate);
     console.log(listDateRecette);
     createTable();
   }
@@ -97,12 +90,18 @@ function editRow() {
 
   var dateRecetteUpdated = document.getElementById("datepickerId").value;
   var nomRecetteUpdated = document.getElementById("bilan_recette-bloca-input").value;
+  var idRecetteUpdated = null;
 
-  var idRecetteUpdated = compareNomRecetteToKnowIdRecette()
+  for (let i = 0; i < JSONresponse.numberOfElements; i++) {
+    //compare the input recette with the recettes in jsonObject to find id
+    if (nomRecetteUpdated === JSONresponse.content[i].nomRecette) {
+      idRecetteUpdated = JSONresponse.content[i].idRecette;
+    }
+  }
   // update array
-  listDateRecette[currentIndex].idRecette = ;
-  listDateRecette[currentIndex].dateRecette = dateRecette;
-  listDateRecette[currentIndex].nomRecette = nomRecette;
+  listDateRecette[currentIndex].idRecette = idRecetteUpdated;
+  listDateRecette[currentIndex].dateRecette = dateRecetteUpdated;
+  listDateRecette[currentIndex].nomRecette = nomRecetteUpdated;
 
   //update table
   createTable();

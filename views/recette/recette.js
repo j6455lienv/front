@@ -12,7 +12,7 @@ $(document).ready(function () {
 //PDF => export pdf, renvoi le code source pdf dans le reponse 
 // => reste à decoder et generer le pdf 
 function exportPdfRecette() {
-  ajaxPOSTgetPDF("recette/pdf", dataEchantillon, function (response) {
+  ajaxGETgetPDF("recette/id/pdf", dataEchantillon, function (response) {
     renderPDF(response, document.getElementById('holderRecette'));
     // console.log(response);
     // console.log(PDFJS.PDFWorker);
