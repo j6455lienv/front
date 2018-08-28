@@ -68,9 +68,4 @@ function elementsDisplayRecette(recetteObj) {
   divBlocIngredientsElt.appendChild(ingredientsElt);
   divBlocDetailElt.appendChild(divBlocIngredientsElt);
 
-  // var divButtElt = document.createElement("div");
-  // divButtElt.id = "btnExportPdfRecette";
-  // divButtElt.innerHTML = "Générer PDF";
-  // divBlocDetailElt.appendChild(divButtElt);
-
 }
