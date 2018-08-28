@@ -1,6 +1,11 @@
+$("#btnExportPdfBilan").hide();
+
 function displayBilan() {
+
+  $("#btnExportPdfBilan").show();
   hideBlocb("bilan_semaine-blocb-display", false);
   console.log('display bilan ok');
+
   // Envoi de l'objet FormData au serveur
   ajaxPOSTgetJSON("bilan", listDateRecette, function (response) {
     console.log("post req => value of JSON: ")
@@ -59,6 +64,7 @@ function displayBilan() {
 
     $("#btnExportPdfBilan").on("click", function () {
       ajaxPOSTgetPDF("bilan/pdf", listDateRecette, function (response) {
+        $("#holderBilanPdf").html("");
         renderPDF(response, document.getElementById('holderBilanPdf'));
         // console.log(response);
         // console.log(PDFJS.PDFWorker);
