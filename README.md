@@ -30,3 +30,14 @@
 
 
   houhouhouhou => ça a l'air pas mal https://github.com/MrRio/jsPDF
+
+handle pdf
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    /* width: 100%; */
+    background: grey;
+
+    background-color: white!important;
+    width: 100%!important;
+    margin: 0 auto!important;

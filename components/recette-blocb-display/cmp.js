@@ -23,9 +23,9 @@ function displayRecette() {
 
   var inputNbPersoRecette = document.getElementById("recette-bloca-select").value;
   //PDF => export pdf, renvoi le code source pdf dans le reponse 
-  // => reste à decoder et generer le pdf 
   $("#btnExportPdfRecette").on("click", function () {
     ajaxGETgetPDF("recette/" + idRecette + "/nbPersonnes/" + inputNbPersoRecette + "/pdf", function (response) {
+      $("#holderRecette").html("");
       renderPDF(response, document.getElementById('holderRecette'));
     });
   });
@@ -62,8 +62,15 @@ function elementsDisplayRecette(recetteObj) {
   divBlocImgElt.appendChild(imgElt);
 
   $(".blocIngredients").html("");
-  var divBlocIngredientsElt = document.getElementsByClassName("blocIngredients")[0];
+  var divBlocIngredientsElt = document.createElement("div");
   var ingredientsElt = document.createElement("p");
   ingredientsElt.innerHTML = "test bloc ingredient";
   divBlocIngredientsElt.appendChild(ingredientsElt);
+  divBlocDetailElt.appendChild(divBlocIngredientsElt);
+
+  // var divButtElt = document.createElement("div");
+  // divButtElt.id = "btnExportPdfRecette";
+  // divButtElt.innerHTML = "Générer PDF";
+  // divBlocDetailElt.appendChild(divButtElt);
+
 }

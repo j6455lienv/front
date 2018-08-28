@@ -19,3 +19,7 @@ $("#recette-bloca-input").on('keyup', function () {
     });
   });
 });
+
+$(".recette-bloca-button").on("click", function(){
+  displayRecette();
+});

@@ -33,6 +33,18 @@ function hideBlocb(classIdName, boolean) {
   blocBElt.hidden = boolean;
 }
 
+// var width;
+// var height;
+// $( window ).resize(function(e) {
+//   console.log($("[value='Export PDF']"))
+  
+//   $("[value='Export PDF']").trigger("click");
+//   $("canvas:first").remove();
+//   console.log(e);
+  
+// });
+
+
 function renderPDF(pPdfData, canvasContainer, options) {
   var options = options || {
     scale: 1
@@ -41,6 +53,8 @@ function renderPDF(pPdfData, canvasContainer, options) {
   function renderPage(page) {
     var viewport = page.getViewport(options.scale);
     var canvas = document.createElement('canvas');
+    //canvas.setAttribute("width", "100%");
+    // canvas.width = "100%"; 
     var ctx = canvas.getContext('2d');
     var renderContext = {
       canvasContext: ctx,
@@ -58,7 +72,7 @@ function renderPDF(pPdfData, canvasContainer, options) {
     for (var num = 1; num <= pdfDoc.numPages; num++)
       pdfDoc.getPage(num).then(renderPage);
   }
-  // PDFJS.workerSrc = "lib/pdfjs-dist/build/pdf.worker.js";
+  PDFJS.workerSrc = "lib/pdfjs-dist/build/pdf.worker.js";
   PDFJS.disableWorker = true;
   PDFJS.getDocument({
     data: pPdfData

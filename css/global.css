@@ -3,9 +3,11 @@
 h1,
 h3,
 h4 {
+  font-size: 22px;
   text-align: center;
-  text-transform: uppercase;
+  text-transform: none;
   font-family: 'Montserrat', sans-serif !important;
+  color: #68D74A!important;
 }
 
 body {
@@ -18,11 +20,9 @@ body {
 
 /*generic class border divs components*/
 .components-border-div {
-  border: 1px solid #CCD2D9 !important;
-  border-radius: 5px !important;
   padding: 10px 0 10px 0 !important;
   margin: 10px 0 10px 0 !important
-}
+} 
 
 /* @media */
 /* 415px => tel iphone 6 plus max */

@@ -4,16 +4,16 @@
 <div class="recette-bloca-controll components-border-div">
 
 	<!-- selection list to choose type of recette -->
-	<div class="recette-bloca-input container">
-		<label for="recette-bloca-input">Choisir une recette</label>
+	<div class="recette-bloca-input">
+		<label for="recette-bloca-input">Choisir une recette :</label>
 		<input type="search" id="recette-bloca-input" class="form-control form-control-lg"
-		/>
+		autocomplete="off"/>
 	</div>
 
 	<!-- selection list to choose type of recette -->
-	<div class="recette-bloca-select container">
-		<label for="recette-bloca-select">Choisir un nombre de personnes</label>
-		<select id="recette-bloca-select" class="form-control form-control-lg">
+	<div class="recette-bloca-select">
+		<label for="recette-bloca-select">Nombre de personnes :</label>
+		<select id="recette-bloca-select" class="form-control form-control-lg" autocomplete="off">
 			<option>1</option>
 			<option>2</option>
 			<option>3</option>
@@ -29,9 +29,8 @@
 		</select>
 	</div>
 
-	<div class="recette-bloca-button container">
-		<input type="button" class="btn btn-info" value="Submit" onclick="javascript:displayRecette();"
-		/>
+	<div class="recette-bloca-button">
+		<div class="recette-but">rechercher</div>
 	</div>
 </div>
 

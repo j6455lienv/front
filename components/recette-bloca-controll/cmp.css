@@ -1,3 +1,33 @@
 .recette-bloca-button {
   padding-top: 11px!important;
 }
+
+.components-border-div{
+  margin:0 15px!important;
+}
+
+.components-border-div input, .components-border-div select{
+  border-radius: inherit;
+}
+
+.recette-bloca-button{
+  display: flex;
+  justify-content: center;
+}
+
+.recette-but{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  color: #68D74A;
+  font-size: 16px;
+  background-color: #FFF6E5;
+  height: 45px;
+  width: 350px;
+  cursor: pointer;
+}
+
+.recette-bloca-input, .recette-bloca-select{
+  padding-top: 15px;
+}

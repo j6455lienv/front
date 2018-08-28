@@ -3,10 +3,25 @@ header a {
 }
 
 header { 
-  margin-bottom: 20px;
   margin-top: 20px;
 }
 
 header img {
-  width: 39px;
+  width: 23px;
 }
+
+.custom-navbar{
+  background-color:#F2F2F2;
+  margin-top: 40px;
+}
+
+.header-container{
+  display: flex;
+  justify-content: center;
+}
+
+.img-header{
+  width: auto;
+  height: 74px;
+}
+
