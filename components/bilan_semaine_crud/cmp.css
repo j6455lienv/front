@@ -1,3 +1,23 @@
 #table-crud span {
   cursor: pointer;
 }
+
+.bilan-bloca-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  color: #68D74A;
+  font-size: 16px;
+  background-color: #FFF6E5;
+  height: 45px;
+  width: 350px;
+  cursor: pointer;
+}
+
+.crud-bloca{
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

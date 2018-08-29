@@ -54,7 +54,7 @@ function createRow() {
 
   // compare recette name to know id
   console.log(JSONresponse);
-  console.log("Nom de la recette create: "+nomRecetteCreate);
+  console.log("Nom de la recette create: " + nomRecetteCreate);
 
   for (let i = 0; i < JSONresponse.numberOfElements; i++) {
     if (nomRecetteCreate === JSONresponse.content[i].nomRecette) {
@@ -62,7 +62,7 @@ function createRow() {
     }
   }
 
-  console.log("id recette recupérée: "+idRecetteCreate);
+  console.log("id recette recupérée: " + idRecetteCreate);
   //control values quality 
   if (dateRecetteCreate === '' || nomRecetteCreate === '') {
     /* UP_implementation d'une feature errorMessage à mutualiser 
@@ -117,18 +117,6 @@ function deleteRow(indexArray) {
   createTable();
 }
 
-// type date post bilan/
-// [{
-//   "idRecette": 1,
-//   "nomRecette": "",
-//   "dateRecette": ""
-
-// }, {
-//   "idRecette": 2,
-//   "nomRecette": "",
-//   "dateRecette": ""
-// }, {
-//   "idRecette": 3,
-//   "nomRecette": "",
-//   "dateRecette": ""
-// }]
+$(".bilan-but").on("click", function(){
+  displayBilan();
+});
