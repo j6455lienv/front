@@ -1,4 +1,4 @@
-$("#recette-bloca-input").on('keyup', function () {
+$("#recette-bloca-input").on('keyup', () => {
   var listRecette = [];
   var inputValue = document.getElementById("recette-bloca-input").value;
 
@@ -10,9 +10,6 @@ $("#recette-bloca-input").on('keyup', function () {
       listRecette.push(JSONresponse.content[i].nomRecette);
     }
 
-    // console.log(listRecette);
-    // console.log(JSONresponse);
-
     // autocomplete jquery ui library
     $("#recette-bloca-input").autocomplete({
       source: listRecette
@@ -20,6 +17,6 @@ $("#recette-bloca-input").on('keyup', function () {
   });
 });
 
-$(".recette-bloca-button").on("click", function(){
+$(".recette-bloca-button").on("click", () => {
   displayRecette();
 });

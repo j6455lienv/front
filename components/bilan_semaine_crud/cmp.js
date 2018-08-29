@@ -117,6 +117,6 @@ function deleteRow(indexArray) {
   createTable();
 }
 
-$(".bilan-but").on("click", function(){
+$(".bilan-but").on("click", function () {
   displayBilan();
 });

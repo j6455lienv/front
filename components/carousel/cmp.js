@@ -8,6 +8,7 @@ function randomImage(){
   var slide1Elt = document.getElementById("slide1");
   var slide2Elt = document.getElementById("slide2");
   var slide3Elt = document.getElementById("slide3");
+  var staticAccueilImg = document.getElementById("staticImg");
 
   var slide1Random = getRandom(1, 10);
   var slide2Random = getRandom(1, 10);
@@ -25,6 +26,7 @@ function randomImage(){
   slide1Elt.src = "./img/img-" + slide1Random + ".jpg";
   slide2Elt.src = "./img/img-" + slide2Random + ".jpg";
   slide3Elt.src = "./img/img-" + slide3Random + ".jpg";
+  staticAccueilImg.src = "./img/img-" + getRandom(1,10) + ".jpg";
 
   //console.log(slide1Elt.src);
 
