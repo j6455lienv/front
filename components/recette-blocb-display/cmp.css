@@ -3,27 +3,6 @@
   width: 100% !important;
 }
 
-@media (min-width: 768px) {
-  .recette-blocb-display .presentation {
-    display: flex;
-    justify-content: space-around;
-    flex-direction: row-reverse;
-  }
-  .blocImg{
-    padding-right: 10px;
-  }
-  
-  .blocTitle{
-    padding-left: 10px;
-  }
-}
-
-@media (max-width: 768px) {
-  #btnExportPdfRecette{
-    margin-bottom: 10px;
-  }
-}
-
 #btnExportPdfRecette{
   margin-left: 10px;
 }
@@ -44,4 +23,37 @@
 
 .blocImg, .blocTitle{
   width:100%;
+}
+
+.blocTitle p {
+  margin-bottom: 0px; 
+}
+
+.blocTitle h5 {
+  margin: 20px 0 15px 0; 
+}
+
+.recette-page .presentation{
+  margin-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+  .recette-blocb-display .presentation {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row-reverse;
+  }
+  .blocImg{
+    padding-right: 10px;
+  }
+  
+  .blocTitle{
+    padding-left: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  #btnExportPdfRecette{
+    margin-bottom: 10px;
+  }
 }

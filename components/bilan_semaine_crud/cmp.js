@@ -58,7 +58,7 @@ function createRow() {
 
   for (let i = 0; i < JSONresponse.numberOfElements; i++) {
     if (nomRecetteCreate === JSONresponse.content[i].nomRecette) {
-      idRecetteCreate = JSONresponse.content[i].idRecette;
+      idRecetteCreate = JSONresponse.content[i].id;
     }
   }
 
@@ -72,7 +72,7 @@ function createRow() {
     //add new object to the displayTableBlocA Array 
     listDateRecette.push({
       // modify object
-      "idRecette": idRecetteCreate,
+      "id": idRecetteCreate,
       "nomRecette": nomRecetteCreate,
       "dateRecette": dateRecetteCreate
       //----//

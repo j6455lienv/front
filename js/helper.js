@@ -21,7 +21,7 @@ function compareNomRecetteToKnowIdRecette(JSONresponse, inputRecette) {
   for (let i = 0; i < JSONresponse.numberOfElements; i++) {
     //compare the input recette with the recettes in jsonObject to find id
     if (inputRecette === JSONresponse.content[i].nomRecette) {
-      return JSONresponse.content[i].idRecette;
+      return JSONresponse.content[i].id;
     }
   }
 }

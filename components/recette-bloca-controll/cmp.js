@@ -17,6 +17,6 @@ $("#recette-bloca-input").on('keyup', () => {
   });
 });
 
-$(".recette-bloca-button").on("click", () => {
+$(".recette-but").on("click", () => {
   displayRecette();
 });
