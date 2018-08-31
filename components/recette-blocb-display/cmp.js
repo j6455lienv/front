@@ -12,7 +12,7 @@ function displayRecette() {
     if (idRecette === null) {
       errorMessage(inputRecette);
     } else {
-      elementsDisplayRecette(JSON.parse(response, inputNbPersonne));
+      elementsDisplayRecette(JSON.parse(response), inputNbPersonne);
     }
   });
 
@@ -62,9 +62,7 @@ function elementsDisplayRecette(recetteObj, nbPersonne) {
   //display recette details
   for (var i = 0; i < recetteObj.recetteIngredients.length; i++) {
     var ingredientsElt = document.createElement("p");
-    ingredientsElt.innerHTML = "&rarr; " + recetteObj.recetteIngredients[i].ingredients.libelle + ", " +
-      (recetteObj.recetteIngredients[i].quantite * nbPersonne) +
-      " " + recetteObj.recetteIngredients[i].ingredients.uniteMesure;
+    ingredientsElt.innerHTML = "&rarr; " + recetteObj.recetteIngredients[i].ingredients.libelle + ", " + (recetteObj.recetteIngredients[i].quantite * nbPersonne) + " " + recetteObj.recetteIngredients[i].ingredients.uniteMesure;
     divBlocIngredientsElt.appendChild(ingredientsElt);
   }
 
