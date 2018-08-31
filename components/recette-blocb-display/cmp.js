@@ -8,6 +8,7 @@ function displayRecette() {
 
   // compare recette name to know id
   var idRecette = compareNomRecetteToKnowIdRecette(JSONresponse, inputRecette);
+  var nomRecette = null;
 
   ajaxGETgetJSON("recette/" + idRecette, (response) => {
     if (idRecette === null) {
@@ -15,15 +16,20 @@ function displayRecette() {
     } else {
       elementsDisplayRecette(JSON.parse(response), inputNbPersonne, uniteMesureBilanPourUnePersonne);
     }
+
+    nomRecette = JSON.parse(response).nomRecette;
   });
 
-  var inputNbPersoRecette = document.getElementById("recette-bloca-select").value;
   //PDF => export pdf, renvoi le code source pdf dans le reponse 
   $("#btnExportPdfRecette").on("click", () => {
-    ajaxGETgetPDF("recette/" + idRecette + "/nbPersonnes/" + inputNbPersoRecette + "/pdf", (response) => {
+    ajaxGETgetPDF("recette/" + idRecette + "/nbPersonnes/" + inputNbPersonne + "/pdf", (response) => {
       $("#holderRecette").html("");
       renderPDF(response, document.getElementById('holderRecette'));
     });
+
+    setTimeout(() => {
+      downloadPdf(nomRecette, inputNbPersonne);
+    },1000);
   });
 }
 
@@ -94,4 +100,21 @@ function elementsDisplayRecette(recetteObj, nbPersonne, uniteMesureBilanPourUneP
   divBlocBilanNutrElt.appendChild(vitamineB12ParPortion);
   divBlocBilanNutrElt.appendChild(vitamineCParPortion);
   divBlocBilanNutrElt.appendChild(vitamineDParPortion);
+}
+
+function downloadPdf(nomRecette, nbPersonnes) {
+  //download pdf
+  console.log("download pdf lancé");
+  var strPersonne = "personne";
+  if (nbPersonnes > 1) {
+    strPersonne = "personnes";
+  }
+
+  var canvas = document.getElementById("my-canvas");
+  console.log(canvas);
+
+  var imgData = canvas.toDataURL("image/jpeg", 1.0);
+  var pdf = new jsPDF();
+  pdf.addImage(imgData, 'JPEG', 0, 0);
+  pdf.save("Nutrimeal_" + nomRecette + "_" + nbPersonnes + "_" + strPersonne + ".pdf");
 }

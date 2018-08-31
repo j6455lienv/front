@@ -40,19 +40,16 @@ function renderPDF(pPdfData, canvasContainer, pOptions) {
 
   function renderPage(page) {
     var viewport = page.getViewport(options.scale);
-    var canvas = document.createElement('canvas');
-    //canvas.setAttribute("width", "100%");
-    // canvas.width = "100%"; 
+    var canvas = document.createElement("canvas");
+    canvas.id = "my-canvas"; 
     var ctx = canvas.getContext('2d');
     var renderContext = {
       canvasContext: ctx,
       viewport: viewport
     };
-
     canvas.height = viewport.height;
     canvas.width = viewport.width;
     canvasContainer.appendChild(canvas);
-
     page.render(renderContext);
   }
 

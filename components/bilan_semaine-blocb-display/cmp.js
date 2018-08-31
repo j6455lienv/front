@@ -27,6 +27,15 @@ function displayBilan() {
         $("#holderBilanPdf").html("");
         renderPDF(response, document.getElementById('holderBilanPdf'));
       });
+      
+      setTimeout(() => {
+        //download pdf
+        var canvas = document.getElementById("my-canvas");
+        var imgData = canvas.toDataURL("image/jpeg", 1.0);
+        var pdf = new jsPDF();
+        pdf.addImage(imgData, 'JPEG', 0, 0);
+        pdf.save("Nutrimeal_bilan.pdf");
+      }, 1000);
     });
   });
 }
