@@ -8,16 +8,18 @@ function displayBilan() {
 
   //select parent div tag
   var blocBilanElt = document.getElementById("blocBilan");
+  var uniteMesurePourcent = "%";
+  var uniteMesureMicroG = "&mu;g";
 
   // Envoi de l'objet FormData au serveur
   ajaxPOSTgetJSON("bilan", listDateRecette, (response) => {
     //iterate on list of recettes
     $("#blocBilan").html("");
     for (var i = 0; i < JSON.parse(response).listeRecettes.length; i++) {
-      displayOneRecette(JSON.parse(response).listeRecettes[i], blocBilanElt);
+      displayOneRecette(JSON.parse(response).listeRecettes[i], blocBilanElt, uniteMesurePourcent);
     }
 
-    displayBilanRecette(JSON.parse(response), blocBilanElt);
+    displayBilanRecette(JSON.parse(response), blocBilanElt, uniteMesureMicroG);
 
     //use btn export pdf
     $("#btnExportPdfBilan").on("click", () => {
@@ -30,7 +32,7 @@ function displayBilan() {
 }
 
 //dislay 1 recette
-function displayOneRecette(recette, blocBilanElt) {
+function displayOneRecette(recette, blocBilanElt, uniteMesure) {
 
   //create dynamique tags
   var titleElt = document.createElement("h4"),
@@ -42,11 +44,11 @@ function displayOneRecette(recette, blocBilanElt) {
 
   //add html in new tags
   titleElt.innerHTML = recette.nomRecette;
-  ferElt.innerHTML = "Fer : " + recette.ferParPortion;
-  sodiumElt.innerHTML = "Soduim : " + recette.sodiumParPortion;
-  vitamineB12Elt.innerHTML = "Vitamines B12 : " + recette.vitamineB12ParPortion;
-  vitamineCElt.innerHTML = "Vitamines C : " + recette.vitamineCParPortion;
-  vitamineDElt.innerHTML = "Vitamines D : " + recette.vitamineDParPortion;
+  ferElt.innerHTML = "Fer : " + recette.ferParPortion + " " + uniteMesure;
+  sodiumElt.innerHTML = "Soduim : " + recette.sodiumParPortion + " " + uniteMesure;
+  vitamineB12Elt.innerHTML = "Vitamines B12 : " + recette.vitamineB12ParPortion + " " + uniteMesure;
+  vitamineCElt.innerHTML = "Vitamines C : " + recette.vitamineCParPortion + " " + uniteMesure;
+  vitamineDElt.innerHTML = "Vitamines D : " + recette.vitamineDParPortion + " " + uniteMesure;
 
   //add new Elts in parent div tag
   blocBilanElt.appendChild(titleElt);
@@ -58,7 +60,7 @@ function displayOneRecette(recette, blocBilanElt) {
 }
 
 //dislay bilan recette
-function displayBilanRecette(bilanRecette, blocBilanElt) {
+function displayBilanRecette(bilanRecette, blocBilanElt, uniteMesure) {
 
   var bilanTitleElt = document.createElement("h4"),
     bilanFerElt = document.createElement("p"),
@@ -68,11 +70,11 @@ function displayBilanRecette(bilanRecette, blocBilanElt) {
     bilanVitaminesDElt = document.createElement("p");
 
   bilanTitleElt.innerHTML = " Bilan ";
-  bilanFerElt.innerHTML = " Bilan Total en  Fer  est de : " + bilanRecette.bilanfer;
-  bilanSodiumElt.innerHTML = " Bilan Total en  Soduim est de : " + bilanRecette.bilanSodium;
-  bilanVitaminesB12Elt.innerHTML = " Bilan total en Vitamines B12 est de : " + bilanRecette.bilanVitamineB12;
-  bilanVitaminesCElt.innerHTML = " Bilan total en Vitamines C est de : " + bilanRecette.bilanVitamineC;
-  bilanVitaminesDElt.innerHTML = " Bilan total en Vitamines D est de : " + bilanRecette.bilanVitamineD;
+  bilanFerElt.innerHTML = " Bilan Total en  Fer  est de : " + bilanRecette.bilanfer + " " + uniteMesure;
+  bilanSodiumElt.innerHTML = " Bilan Total en  Soduim est de : " + bilanRecette.bilanSodium + " " + uniteMesure;
+  bilanVitaminesB12Elt.innerHTML = " Bilan total en Vitamines B12 est de : " + bilanRecette.bilanVitamineB12 + " " + uniteMesure;
+  bilanVitaminesCElt.innerHTML = " Bilan total en Vitamines C est de : " + bilanRecette.bilanVitamineC + " " + uniteMesure;
+  bilanVitaminesDElt.innerHTML = " Bilan total en Vitamines D est de : " + bilanRecette.bilanVitamineD + " " + uniteMesure;
 
   blocBilanElt.appendChild(bilanTitleElt);
   blocBilanElt.appendChild(bilanFerElt);

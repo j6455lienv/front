@@ -4,6 +4,7 @@ function displayRecette() {
   // store values of controll bloc
   var inputRecette = document.getElementById("recette-bloca-input").value;
   var inputNbPersonne = document.getElementById("recette-bloca-select").value;
+  var uniteMesureBilanPourUnePersonne = "%";
 
   // compare recette name to know id
   var idRecette = compareNomRecetteToKnowIdRecette(JSONresponse, inputRecette);
@@ -12,7 +13,7 @@ function displayRecette() {
     if (idRecette === null) {
       errorMessage(inputRecette);
     } else {
-      elementsDisplayRecette(JSON.parse(response), inputNbPersonne);
+      elementsDisplayRecette(JSON.parse(response), inputNbPersonne, uniteMesureBilanPourUnePersonne);
     }
   });
 
@@ -26,7 +27,7 @@ function displayRecette() {
   });
 }
 
-function elementsDisplayRecette(recetteObj, nbPersonne) {
+function elementsDisplayRecette(recetteObj, nbPersonne, uniteMesureBilanPourUnePersonne) {
   // show display bloc
   hideBlocb("recette-blocb-display", false);
 
@@ -81,11 +82,11 @@ function elementsDisplayRecette(recetteObj, nbPersonne) {
   var vitamineDParPortion = document.createElement("p");
 
   tempsPreparation.innerHTML = "&rarr; Temps de préparation : " + recetteObj.tempsPreparation + " minutes";
-  ferParPortion.innerHTML = "&rarr; Fer par portion : " + recetteObj.ferParPortion;
-  sodiumParPortion.innerHTML = "&rarr; Sodium par portion : " + recetteObj.sodiumParPortion;
-  vitamineB12ParPortion.innerHTML = "&rarr; Vitamine B12 par portion : " + recetteObj.vitamineB12ParPortion;
-  vitamineCParPortion.innerHTML = "&rarr; Vitamine C par portion : " + recetteObj.vitamineCParPortion;
-  vitamineDParPortion.innerHTML = "&rarr; Vitamine D par portion : " + recetteObj.vitamineDParPortion;
+  ferParPortion.innerHTML = "&rarr; Fer par portion : " + recetteObj.ferParPortion + " " + uniteMesureBilanPourUnePersonne;
+  sodiumParPortion.innerHTML = "&rarr; Sodium par portion : " + recetteObj.sodiumParPortion + " " + uniteMesureBilanPourUnePersonne;
+  vitamineB12ParPortion.innerHTML = "&rarr; Vitamine B12 par portion : " + recetteObj.vitamineB12ParPortion + " " + uniteMesureBilanPourUnePersonne;
+  vitamineCParPortion.innerHTML = "&rarr; Vitamine C par portion : " + recetteObj.vitamineCParPortion + " " + uniteMesureBilanPourUnePersonne;
+  vitamineDParPortion.innerHTML = "&rarr; Vitamine D par portion : " + recetteObj.vitamineDParPortion + " " + uniteMesureBilanPourUnePersonne;
 
   divBlocInstructionsElt.appendChild(tempsPreparation);
   divBlocBilanNutrElt.appendChild(ferParPortion);
