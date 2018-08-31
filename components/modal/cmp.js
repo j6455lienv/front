@@ -35,11 +35,11 @@ function showModal(editOrCreate, indexArray) {
 // global variable for recettes page layout
 var JSONresponseBilan = [];
 
-$("#bilan_recette-bloca-input").on('keyup', function () {
+$("#bilan_recette-bloca-input").on('keyup', () => {
   var listRecette = [];
   var inputValue = document.getElementById("bilan_recette-bloca-input").value;
 
-  ajaxGETgetJSON("recette/search?string=" + inputValue, function (response) {
+  ajaxGETgetJSON("recette/search?string=" + inputValue, (response) => {
     JSONresponse = JSON.parse(response);
 
     //push recette on array to display autocomplete function

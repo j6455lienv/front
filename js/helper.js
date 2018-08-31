@@ -6,7 +6,7 @@
 
 // add js scripts in the project
 function getScript(scriptLink) {
-  $(document).ready(function () {
+  $(document).ready(() => {
     $.getScript('./' + scriptLink, function (data, textStatus, jqxhr) {
       //console.log( data );
       //console.log( textStatus );
@@ -33,8 +33,8 @@ function hideBlocb(classIdName, boolean) {
   blocBElt.hidden = boolean;
 }
 
-function renderPDF(pPdfData, canvasContainer, options) {
-  var options = options || {
+function renderPDF(pPdfData, canvasContainer, pOptions) {
+  var options = pOptions || {
     scale: 1
   };
 

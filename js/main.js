@@ -3,9 +3,7 @@
  * 
  * 
  */
-$(document).ready(function () {
-
+$(document).ready(() => {
   //init first load
   init();
-   
 });

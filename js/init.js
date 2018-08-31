@@ -9,7 +9,5 @@ function init() {
   //load header and footer components
   $("#header").load("./components/header/cmp.html");
   $("#footer").load("./components/footer/cmp.html");
-
-  route('accueil'); 
-  
+  route('accueil');
 }

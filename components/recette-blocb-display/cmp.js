@@ -1,22 +1,9 @@
-/*
- * values of recetteObj
- * recetteObj.idRecette //int => attention changement ici
- * recetteObj.recetteIngredients[idRecette] // int
- * recetteObj.recetteIngredients[idIngredient] // int
- * recetteObj.recetteIngredients[quantite] // int
- * recetteObj.recetteIngredients[].ingredients.libelle // int
- * recetteObj.nomRecette // str
- * recetteObj.tempsPreparation // int
- * recetteObj.minerauxParPortion // int
- * recetteObj.vitaminesParPortion // int
- * recetteObj.base64ImageCode // str
- */
-
 function displayRecette() {
   hideBlocb("recette-blocb-display", false);
 
   // store values of controll bloc
   var inputRecette = document.getElementById("recette-bloca-input").value;
+  var inputNbPersonne = document.getElementById("recette-bloca-select").value;
 
   // compare recette name to know id
   var idRecette = compareNomRecetteToKnowIdRecette(JSONresponse, inputRecette);
@@ -25,7 +12,7 @@ function displayRecette() {
     if (idRecette === null) {
       errorMessage(inputRecette);
     } else {
-      elementsDisplayRecette(JSON.parse(response));
+      elementsDisplayRecette(JSON.parse(response, inputNbPersonne));
     }
   });
 
@@ -39,7 +26,7 @@ function displayRecette() {
   });
 }
 
-function elementsDisplayRecette(recetteObj) {
+function elementsDisplayRecette(recetteObj, nbPersonne) {
   // show display bloc
   hideBlocb("recette-blocb-display", false);
 
@@ -58,13 +45,13 @@ function elementsDisplayRecette(recetteObj) {
     divBlocInstructionsElt = document.createElement("div"),
     divBlocBilanNutrElt = document.createElement("div");
 
-  titleElt.innerHTML = recetteObj.nomRecette;
+  titleElt.innerHTML = recetteObj.nomRecette + " pour " + nbPersonne;
   imgElt.src = recetteObj.base64ImageCode;
   imgElt.className = "img-recette";
   divBlocIngredientsElt.innerHTML = "<h5>Ingredients</h5>";
   divBlocInstructionsElt.innerHTML = "<h5>Instructions</h5>";
   divBlocBilanNutrElt.innerHTML = "<h5>Bilan Nutritionnel</h5>";
-  
+
   //param new Divs with title "Ingredients" and "Instructions"
   existDivBlocImgElt.appendChild(imgElt);
   existDivBlocTitleElt.appendChild(titleElt);
@@ -75,7 +62,8 @@ function elementsDisplayRecette(recetteObj) {
   //display recette details
   for (var i = 0; i < recetteObj.recetteIngredients.length; i++) {
     var ingredientsElt = document.createElement("p");
-    ingredientsElt.innerHTML = "&rarr; " + recetteObj.recetteIngredients[i].ingredients.libelle + ", " + recetteObj.recetteIngredients[i].quantite +
+    ingredientsElt.innerHTML = "&rarr; " + recetteObj.recetteIngredients[i].ingredients.libelle + ", " +
+      (recetteObj.recetteIngredients[i].quantite * nbPersonne) +
       " " + recetteObj.recetteIngredients[i].ingredients.uniteMesure;
     divBlocIngredientsElt.appendChild(ingredientsElt);
   }

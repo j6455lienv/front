@@ -21,7 +21,7 @@ function displayBilan() {
 
     //use btn export pdf
     $("#btnExportPdfBilan").on("click", () => {
-      ajaxPOSTgetPDF("bilan/pdf", listDateRecette, function (response) {
+      ajaxPOSTgetPDF("bilan/pdf", listDateRecette, (response) => {
         $("#holderBilanPdf").html("");
         renderPDF(response, document.getElementById('holderBilanPdf'));
       });
