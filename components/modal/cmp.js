@@ -5,7 +5,6 @@ var modal = $("#dynamicallModal");
 
 function showModal(editOrCreate, indexArray) {
   if (editOrCreate === "create") {
-    // console.log('create ok- index => ' + indexArray + ', type modal => ' + editOrCreate);
     // show or hide modal buttons
     $('#button-modal-create').show();
     $('#button-modal-edit').hide();
@@ -17,8 +16,6 @@ function showModal(editOrCreate, indexArray) {
     modal.modal("show");
 
   } else if (editOrCreate === "edit") {
-    console.log('edit ok- index => ' + indexArray + ', type modal => ' + editOrCreate);
-
     // set current index
     currentIndex = indexArray;
 
@@ -54,8 +51,5 @@ $("#bilan_recette-bloca-input").on('keyup', function () {
     $("#bilan_recette-bloca-input").autocomplete({
       source: listRecette
     });
-
-    console.log("JSONresponse : ");
-    console.log(JSONresponse);
   });
 });

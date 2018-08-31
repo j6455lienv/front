@@ -11,8 +11,6 @@ function displayBilan() {
 
   // Envoi de l'objet FormData au serveur
   ajaxPOSTgetJSON("bilan", listDateRecette, (response) => {
-
-    console.log(JSON.parse(response));
     //iterate on list of recettes
     $("#blocBilan").html("");
     for (var i = 0; i < JSON.parse(response).listeRecettes.length; i++) {

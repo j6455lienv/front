@@ -22,7 +22,6 @@ function displayRecette() {
   var idRecette = compareNomRecetteToKnowIdRecette(JSONresponse, inputRecette);
 
   ajaxGETgetJSON("recette/" + idRecette, (response) => {
-    // console.log(JSON.parse(response));
     if (idRecette === null) {
       errorMessage(inputRecette);
     } else {
@@ -74,10 +73,7 @@ function elementsDisplayRecette(recetteObj) {
   existDivBlocTitleElt.appendChild(divBlocBilanNutrElt);
 
   //display recette details
-  //search libelle ingredient
-  //console.log(recetteObj.recetteIngredients.length);
   for (var i = 0; i < recetteObj.recetteIngredients.length; i++) {
-    //console.log(recetteObj.recetteIngredients[i].ingredients.libelle);
     var ingredientsElt = document.createElement("p");
     ingredientsElt.innerHTML = "&rarr; " + recetteObj.recetteIngredients[i].ingredients.libelle + ", " + recetteObj.recetteIngredients[i].quantite +
       " " + recetteObj.recetteIngredients[i].ingredients.uniteMesure;
@@ -86,7 +82,6 @@ function elementsDisplayRecette(recetteObj) {
 
   //search instructions recette
   for (var j = 0; j < recetteObj.instructions.length; j++) {
-    //console.log(recetteObj.instructions[j].libelle);
     var instructElt = document.createElement("p");
     instructElt.innerHTML = "&rarr; " + recetteObj.instructions[j].libelle;
     divBlocInstructionsElt.appendChild(instructElt);

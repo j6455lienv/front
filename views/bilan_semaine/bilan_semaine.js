@@ -9,16 +9,5 @@ $(document).ready(function () {
 function exportPdfBilanPdf() {
   ajaxPOSTgetPDF("bilan/pdf", dataEchantillon, function (response) {
     renderPDF(response, document.getElementById('holderBilanPdf'));
-    // console.log(response);
-    // console.log(PDFJS.PDFWorker);
   });
 }
-
-//echantillon -> test
-var dataEchantillon = [{
-  "idRecette": 1,
-  "nomRecette": "Salade césar"
-}, {
-  "idRecette": 2,
-  "nomRecette": "recette"
-}];

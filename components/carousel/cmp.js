@@ -27,11 +27,6 @@ function randomImage(){
   slide2Elt.src = "./img/img-" + slide2Random + ".jpg";
   slide3Elt.src = "./img/img-" + slide3Random + ".jpg";
   staticAccueilImg.src = "./img/img-" + getRandom(1,10) + ".jpg";
-
-  //console.log(slide1Elt.src);
-
-  //controle fonctionnement random different à chaque F5
-  //console.log(slide1Random + ',' + slide2Random + ',' + slide3Random);
 }
 //fire function
 randomImage();

@@ -33,18 +33,6 @@ function hideBlocb(classIdName, boolean) {
   blocBElt.hidden = boolean;
 }
 
-// var width;
-// var height;
-// $( window ).resize(function(e) {
-//   console.log($("[value='Export PDF']"))
-  
-//   $("[value='Export PDF']").trigger("click");
-//   $("canvas:first").remove();
-//   console.log(e);
-  
-// });
-
-
 function renderPDF(pPdfData, canvasContainer, options) {
   var options = options || {
     scale: 1

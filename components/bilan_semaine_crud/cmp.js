@@ -42,8 +42,6 @@ function createTable() {
     newTr.appendChild(newRecetteTd);
     newTr.appendChild(newEditDeleteTd);
     selectTbodyElt.appendChild(newTr);
-
-    console.log(listDateRecette);
   }
 }
 
@@ -52,21 +50,14 @@ function createRow() {
   var nomRecetteCreate = document.getElementById('bilan_recette-bloca-input').value;
   var idRecetteCreate = null;
 
-  // compare recette name to know id
-  console.log(JSONresponse);
-  console.log("Nom de la recette create: " + nomRecetteCreate);
-
   for (let i = 0; i < JSONresponse.numberOfElements; i++) {
     if (nomRecetteCreate === JSONresponse.content[i].nomRecette) {
       idRecetteCreate = JSONresponse.content[i].id;
     }
   }
 
-  console.log("id recette recupérée: " + idRecetteCreate);
   //control values quality 
   if (dateRecetteCreate === '' || nomRecetteCreate === '') {
-    /* UP_implementation d'une feature errorMessage à mutualiser 
-    avec celle de error-blocb-display dans helper.js __ merci à toi */
     console.log("error message => no value or no good recette");
   } else {
     //add new object to the displayTableBlocA Array 
@@ -75,12 +66,7 @@ function createRow() {
       "id": idRecetteCreate,
       "nomRecette": nomRecetteCreate,
       "dateRecette": dateRecetteCreate
-      //----//
-      // "idRecette": 1,
-      // "nomRecette": "test"
     });
-    console.log(idRecetteCreate);
-    console.log(listDateRecette);
     createTable();
   }
 }
@@ -95,11 +81,11 @@ function editRow() {
   for (let i = 0; i < JSONresponse.numberOfElements; i++) {
     //compare the input recette with the recettes in jsonObject to find id
     if (nomRecetteUpdated === JSONresponse.content[i].nomRecette) {
-      idRecetteUpdated = JSONresponse.content[i].idRecette;
+      idRecetteUpdated = JSONresponse.content[i].id
     }
   }
   // update array
-  listDateRecette[currentIndex].idRecette = idRecetteUpdated;
+  listDateRecette[currentIndex].id = idRecetteUpdated;
   listDateRecette[currentIndex].dateRecette = dateRecetteUpdated;
   listDateRecette[currentIndex].nomRecette = nomRecetteUpdated;
 
