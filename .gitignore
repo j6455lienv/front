@@ -1,3 +1,5 @@
 .sfdx
 .vscode
 .sonarlint
+.idea
+nutrimeal.iml
