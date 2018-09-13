@@ -27,9 +27,11 @@ function displayRecette() {
       renderPDF(response, document.getElementById('holderRecette'));
     });
 
+    $("#spinner-cmp").addClass("spinner");
     setTimeout(() => {
       downloadPdf(nomRecette, inputNbPersonne);
-    },1000);
+      $("#spinner-cmp").removeClass("spinner");
+    }, 2200);
   });
 }
 

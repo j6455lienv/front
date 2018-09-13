@@ -41,7 +41,7 @@ function renderPDF(pPdfData, canvasContainer, pOptions) {
   function renderPage(page) {
     var viewport = page.getViewport(options.scale);
     var canvas = document.createElement("canvas");
-    canvas.id = "my-canvas"; 
+    canvas.id = "my-canvas";
     var ctx = canvas.getContext('2d');
     var renderContext = {
       canvasContext: ctx,
