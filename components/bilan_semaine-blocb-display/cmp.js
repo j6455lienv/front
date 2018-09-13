@@ -27,7 +27,7 @@ function displayBilan() {
         $("#holderBilanPdf").html("");
         renderPDF(response, document.getElementById('holderBilanPdf'));
       });
-      
+
       setTimeout(() => {
         //download pdf
         var canvas = document.getElementById("my-canvas");
