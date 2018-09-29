@@ -1,4 +1,4 @@
-var hostPath = "https://github.com/j6455lienv/nutrimeal_back.git/";
+var hostPath = "https://github.com/j6455lienv/nutrimeal_back/";
 
 /** ajax GET
  * return: JSON
