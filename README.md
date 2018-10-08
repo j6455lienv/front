@@ -1,1 +1,0 @@
-##### test app on [https://j6455lienv.github.io/nutrimeal](https://j6455lienv.github.io/nutrimeal)
